@@ -1,0 +1,17 @@
+# --- SYSTEM / OS ---
+.DS_Store
+Thumbs.db
+
+# --- WORDPRESS BACKEND ---
+# Core WordPress directories
+app/public/wp-admin/
+app/public/wp-includes/
+
+# Sensitive configuration and database credentials
+app/public/wp-config.php
+
+# Large media uploads
+app/public/wp-content/uploads/
+
+# Server log files
+*.log
