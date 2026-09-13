@@ -12,8 +12,8 @@
 </style>
 
 <template>
-  <header>
-    <nav>
+  <header class="pc-header">
+    <nav class="pc-header__nav">
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About Us</RouterLink>
       <RouterLink to="/browse">Browse Parts</RouterLink>
@@ -24,6 +24,14 @@
 
   <RouterView />
 
+  <footer class="pc-footer">
+    <p>&copy; 2026 PC Parts Matcher. All rights reserved.</p>
+  </footer>
+
 </template>
+
+<style scoped>
+
+</style>
 
 
