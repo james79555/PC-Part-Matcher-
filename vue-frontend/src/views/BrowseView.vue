@@ -66,7 +66,7 @@ const addToBuild = (part) => {
 </script>
 
 <template>
-    <main class=""browse-parts>
+    <main class="browse-parts">
         <h1>Browse Parts</h1>
 
         <div class="browse-parts__filter-container" v-if="!store.isLoading && !store.error">
@@ -129,6 +129,9 @@ const addToBuild = (part) => {
 </template>
 
 <style scoped>
+    .browse-parts {
+        margin: 0.5rem;
+    }
     .browse-parts__filter-container  {
         display: flex;
         justify-content: space-around;
