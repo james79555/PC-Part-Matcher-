@@ -11,12 +11,13 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         isLoading.value= true 
         error.value = null 
         try {
-            const res = await fetch('http://pc-part-matcher.local/wp-json/wp/v2/pc-part?per_page=100')
+            const res = await fetch('http://pc-part-matcher.local/wp-json/wp/v2/pc-part?per_page=100&acf_format=standard')
             if (!res.ok) throw new Error('HTTP error! Status: ${res.status}')
                 const rawData = await res.json()
                 inventory.value = rawData.map(part => ({
                     id: part.id,
                     name: part.title.rendered, 
+                    image: part.acf.image || '../public/placeholder_image.jpg',
                     componentType: part.acf.component_type, 
                     price: Number(part.acf.price), 
                     socketType: part.acf.socket_type || null, 

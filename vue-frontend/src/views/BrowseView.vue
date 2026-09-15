@@ -112,17 +112,22 @@ const addToBuild = (part) => {
 
         <div v-else class="browse-parts__grid">
             <article v-for="part in filteredInventory" :key="part.id" class="browse-parts__card">
-                <h3 class="browse-parts__card-title">{{ part.name }}</h3>
-                <p><strong>Type: </strong>{{ part.componentType }}</p>
-                <p><strong>Price: </strong>${{ part.price }}</p>
-
-                <p v-if="part.socketType"><strong>Socket: </strong>{{ part.socketType }}</p>
-                <p v-if="part.memoryType"><strong>Memory: </strong> {{ part.memoryType }}</p>
-                <p v-if="part.formFactor"><strong>Form Factor: </strong> {{ part.formFactor }}</p>
-                <p v-if="part.wattage > 0"><strong>Wattage: </strong> {{ part.wattage }}W</p>
-                <p v-if="part.storageInterface"><strong>Storage Interface: </strong>{{ part.storageInterface }}</p>
-
-                <button class="browse-parts__card-button" @click="addToBuild(part)">Add to Build</button>
+                <img class="browse-parts__card-image" :src="part.image" :alt="part.name" />
+                <div class ="browse-parts__card-info">
+                    <div class="browse-parts__card-header">
+                        <h3 class="browse-parts__card-title">{{ part.name }}</h3>
+                        <button class="browse-parts__card-button" @click="addToBuild(part)">Add to Build</button>
+                    </div>
+                    <div class="browse-parts__card-detail">
+                        <p><strong>Type: </strong>{{ part.componentType }}</p>
+                        <p><strong>Price: </strong>${{ part.price }}</p>
+                        <p v-if="part.socketType"><strong>Socket: </strong>{{ part.socketType }}</p>
+                        <p v-if="part.memoryType"><strong>Memory: </strong> {{ part.memoryType }}</p>
+                        <p v-if="part.formFactor"><strong>Form Factor: </strong> {{ part.formFactor }}</p>
+                        <p v-if="part.wattage > 0"><strong>Wattage: </strong> {{ part.wattage }}W</p>
+                        <p v-if="part.storageInterface"><strong>Storage Interface: </strong>{{ part.storageInterface }}</p>
+                    </div>
+                </div>
             </article>
         </div>
     </main>
@@ -153,17 +158,36 @@ const addToBuild = (part) => {
         margin-top:2rem;
     }
     .browse-parts__card {
+        display: flex; 
+        flex-direction: row;
         border: 1px solid #ddd; 
-        padding: 1.5rem;
-        border-radius: 8px;
+        border-radius: var(--border-radius);
         background-color: #f9f9f9;
+    }
+    .browse-parts__card-info {
+        display: flex; 
+        flex-direction: column;
+        flex: 1;
+        justify-content: flex-start;
+        padding: 1rem;
+    }
+    .browse-parts__card-image {
+        width: clamp(150px, 25%, 250px);
+        object-fit: contain;
+        border-radius: var(--border-radius);
+    }
+    .browse-parts__card-header {
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
     }
     .browse-parts__card-title {
         margin-top: 0; 
         font-size: 1.2rem;
     }
     .browse-parts__card-button {
-        margin-top: 1rem;
         padding: 0.5rem 1rem; 
         background-color: #007bff;
         color: white; 
@@ -173,5 +197,10 @@ const addToBuild = (part) => {
     }
     .browse-parts__card-button:hover {
         background-color: #0056b3;
+    }
+    .browse-parts__card-detail {
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 0.5rem;
     }
 </style>
