@@ -119,6 +119,7 @@
     padding: 2rem; 
     margin: 1rem;
     border-bottom: 1px solid var(--colour-border);
+    border-top: 1px solid var(--colour-border);
   }
   .pc-footer__top-header {
     margin-bottom: 1rem;

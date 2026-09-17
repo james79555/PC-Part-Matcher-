@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, computed, ref} from 'vue'
+import {onMounted, computed, ref, watch} from 'vue'
 import {usePcPartsStore} from '../stores/pcParts'
 
 const store = usePcPartsStore()
@@ -8,6 +8,8 @@ const selectedSocketType = ref('')
 const selectedFormFactor = ref('')
 const selectedStorageInterface = ref('')
 const selectedSort = ref('')
+const currentPage = ref(1)
+const itemsPerPage = ref(6)
 
 const uniqueCategories = computed( () => {
     const categories = store.inventory.map(part => part.componentType)
@@ -51,6 +53,21 @@ const filteredInventory = computed( () => {
     }
 
     return result 
+})
+
+const totalPages = computed( () => {
+    return Math.ceil(filteredInventory.value.length / itemsPerPage.value)
+})
+
+const pageinatedInventory = computed ( () => {
+    const startIndex = (currentPage.value - 1) * itemsPerPage.value
+    const endIndex = startIndex + itemsPerPage.value
+
+    return filteredInventory.value.slice(startIndex, endIndex)
+})
+
+watch(filteredInventory, () => {
+    currentPage.value = 1
 })
 
 onMounted( () => {
@@ -120,7 +137,7 @@ const addToBuild = (part) => {
         <div v-if="filteredInventory.length === 0"><strong>No Parts Found. Please expand your search criteria.</strong></div>
 
         <div v-else class="browse-parts__grid">
-            <article v-for="part in filteredInventory" :key="part.id" class="browse-parts__card">
+            <article v-for="part in pageinatedInventory" :key="part.id" class="browse-parts__card">
                 <img class="browse-parts__card-image" :src="part.image" :alt="part.name" />
                 <div class ="browse-parts__card-info">
                     <div class="browse-parts__card-header">
@@ -139,6 +156,11 @@ const addToBuild = (part) => {
                 </div>
             </article>
         </div>
+        <nav class="browse-parts__pagination-nav" aria-label="Page Navigation">
+            <button class="browse-parts__pagination-button" :disabled="currentPage === 1" @click="currentPage--">Previous</button>
+            <span class="browse-parts__pagination-info">Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="browse-parts__pagination-button" :disabled="currentPage === totalPages || totalPages === 0" @click="currentPage++">Next</button>
+        </nav>
     </main>
 </template>
 
@@ -213,5 +235,14 @@ const addToBuild = (part) => {
         flex-wrap: wrap; 
         gap: 0.5rem;
         font-size: clamp(0.25rem, 0.5rem, 0.75rem);
+    }
+    .browse-parts__pagination-nav {
+        display: flex; 
+        justify-content:flex-end;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    .browse-parts__pagination-button {
+        margin: 0 0.5rem;
     }
 </style>
