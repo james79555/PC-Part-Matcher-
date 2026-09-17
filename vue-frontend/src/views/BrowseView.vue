@@ -89,6 +89,15 @@ const addToBuild = (part) => {
                 </select>
             </div>
             <div class="browse-parts__filter-group">
+                <label for="socketType-filter">Filter by Socket Type: </label>
+                <select class="browse-parts__filter-select" v-model="selectedSocketType">
+                    <option value=""> All Socket Types </option>
+                    <option v-for="socket in uniqueSockets" :key="socket" :value="socket">
+                        {{ socket }}
+                    </option>
+                </select>
+            </div>
+            <div class="browse-parts__filter-group">
                 <label for="storageInterface-filter">Filter by Storage Interface: </label>
                 <select class="browse-parts__filter-select" v-model="selectedStorageInterface">
                     <option value=""> All Storage Interfaces </option>
