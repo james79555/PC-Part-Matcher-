@@ -61,7 +61,7 @@ onMounted( () => {
 
 const addToBuild = (part) => {
     store.activeBuild.push(part)
-    alert('${part.name} added to your build!')
+    alert(part.name + ' added to your build!')
 }
 </script>
 
@@ -172,8 +172,8 @@ const addToBuild = (part) => {
         padding: 1rem;
     }
     .browse-parts__card-image {
-        width: clamp(150px, 25%, 250px);
-        object-fit: contain;
+        width: clamp(50px, 20%, 150px);
+        object-fit: cover;
         border-radius: var(--border-radius);
     }
     .browse-parts__card-header {
@@ -181,11 +181,11 @@ const addToBuild = (part) => {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     .browse-parts__card-title {
         margin-top: 0; 
-        font-size: 1.2rem;
+        font-size: clamp(0.5rem, 0.75rem, 1.0rem);
     }
     .browse-parts__card-button {
         padding: 0.5rem 1rem; 
@@ -194,6 +194,7 @@ const addToBuild = (part) => {
         border: none;
         border-radius: 4px;
         cursor: pointer; 
+        font-size: clamp(0.25rem, 0.5rem, 0.75rem);
     }
     .browse-parts__card-button:hover {
         background-color: #0056b3;
@@ -202,5 +203,6 @@ const addToBuild = (part) => {
         display: flex;
         flex-wrap: wrap; 
         gap: 0.5rem;
+        font-size: clamp(0.25rem, 0.5rem, 0.75rem);
     }
 </style>
