@@ -134,26 +134,25 @@ const addToBuild = (part) => {
 
         <div v-if="store.isLoading">Loading inventory...</div>
         <div v-else-if="store.error">{{ store.error }}</div>
-        <div v-if="filteredInventory.length === 0"><strong>No Parts Found. Please expand your search criteria.</strong></div>
 
-        <div v-else class="browse-parts__grid">
-            <article v-for="part in pageinatedInventory" :key="part.id" class="browse-parts__card">
-                <img class="browse-parts__card-image" :src="part.image" :alt="part.name" />
-                <div class ="browse-parts__card-info">
-                    <div class="browse-parts__card-header">
-                        <h3 class="browse-parts__card-title">{{ part.name }}</h3>
-                        <button class="browse-parts__card-button" @click="addToBuild(part)">Add to Build</button>
-                    </div>
-                    <div class="browse-parts__card-detail">
-                        <p><strong>Type: </strong>{{ part.componentType }}</p>
-                        <p><strong>Price: </strong>${{ part.price }}</p>
-                        <p v-if="part.socketType"><strong>Socket: </strong>{{ part.socketType }}</p>
-                        <p v-if="part.memoryType"><strong>Memory: </strong> {{ part.memoryType }}</p>
-                        <p v-if="part.formFactor"><strong>Form Factor: </strong> {{ part.formFactor }}</p>
-                        <p v-if="part.wattage > 0"><strong>Wattage: </strong> {{ part.wattage }}W</p>
-                        <p v-if="part.storageInterface"><strong>Storage Interface: </strong>{{ part.storageInterface }}</p>
-                    </div>
+        <header class="browse-parts__inventory-header">
+            <span class="browse-parts__inventory-col"></span>
+            <span class="browse-parts__inventory-col">Name</span>
+            <span class="browse-parts__inventory-col">Component Type</span>
+            <span class="browse-parts__inventory-col">Price</span>
+            <span class="browse-parts__inventory-col"></span>
+        </header>
+       
+        <div v-if="filteredInventory.length === 0"><strong>No Parts Found. Please expand your search criteria.</strong></div>
+        <div v-else class="browse-parts__inventory-list">
+            <article v-for="part in pageinatedInventory" :key="part.id" class="browse-parts__inventory-card">
+                <img class="browse-parts__inventory-image" :src="part.image" :alt="part.name" />
+                <div class="browse-parts__inventory-info">
+                    <p class="browse-parts__inventory-name"> {{ part.name }}</p>
+                    <p class="browse-parts__inventory-type"> {{ part.componentType }}</p>
+                    <p class="browse-parts__inventory-price"> {{ part.price }}</p>
                 </div>
+                <button class="browse-parts__inventory-col browse-parts__inventory-button"> Add </button>
             </article>
         </div>
         <nav class="browse-parts__pagination-nav" aria-label="Page Navigation">
@@ -182,59 +181,46 @@ const addToBuild = (part) => {
         border-radius: 4px;
         border: 1px solid #ccc
     }
-    .browse-parts__grid {
-        display: grid; 
+    .browse-parts__inventory-header {
+        display: none;
+    }
+    .browse-parts__inventory-list {
+        display: flex;
+        flex-direction: column; 
         grid-template-columns: repeat(autofill, minmax(250px, 1fr));
         gap: 1.5rem;
         margin-top:2rem;
     }
-    .browse-parts__card {
+    .browse-parts__inventory-card {
         display: flex; 
         flex-direction: row;
+        justify-content:flex-start;
+        gap: 1.5rem;
         border: 1px solid #ddd; 
         border-radius: var(--border-radius);
         background-color: #f9f9f9;
     }
-    .browse-parts__card-info {
+    .browse-parts__inventory-info {
         display: flex; 
         flex-direction: column;
-        flex: 1;
-        justify-content: flex-start;
+        justify-content: center;
+        gap: 0.5rem;
         padding: 1rem;
     }
-    .browse-parts__card-image {
+    .browse-parts__inventory-image {
         width: clamp(50px, 20%, 150px);
         object-fit: cover;
         border-radius: var(--border-radius);
     }
-    .browse-parts__card-header {
-        display: flex; 
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    .browse-parts__card-title {
-        margin-top: 0; 
-        font-size: clamp(0.5rem, 0.75rem, 1.0rem);
-    }
-    .browse-parts__card-button {
+    .browse-parts__inventory-button {
         padding: 0.5rem 1rem; 
         background-color: #007bff;
-        color: white; 
-        border: none;
+        color: var(--colour-text-primary); 
+        border: 1px solid var(--colour-border);
         border-radius: 4px;
         cursor: pointer; 
         font-size: clamp(0.25rem, 0.5rem, 0.75rem);
-    }
-    .browse-parts__card-button:hover {
-        background-color: #0056b3;
-    }
-    .browse-parts__card-detail {
-        display: flex;
-        flex-wrap: wrap; 
-        gap: 0.5rem;
-        font-size: clamp(0.25rem, 0.5rem, 0.75rem);
+        margin-left: auto;
     }
     .browse-parts__pagination-nav {
         display: flex; 
