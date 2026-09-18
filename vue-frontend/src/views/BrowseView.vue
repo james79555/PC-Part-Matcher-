@@ -152,7 +152,7 @@ const addToBuild = (part) => {
                     <p class="browse-parts__inventory-type"> {{ part.componentType }}</p>
                     <p class="browse-parts__inventory-price"> {{ part.price }}</p>
                 </div>
-                <button class="browse-parts__inventory-col browse-parts__inventory-button"> Add </button>
+                <button class="browse-parts__inventory-button"> Add </button>
             </article>
         </div>
         <nav class="browse-parts__pagination-nav" aria-label="Page Navigation">
@@ -187,7 +187,6 @@ const addToBuild = (part) => {
     .browse-parts__inventory-list {
         display: flex;
         flex-direction: column; 
-        grid-template-columns: repeat(autofill, minmax(250px, 1fr));
         gap: 1.5rem;
         margin-top:2rem;
     }
@@ -205,7 +204,7 @@ const addToBuild = (part) => {
         flex-direction: column;
         justify-content: center;
         gap: 0.5rem;
-        padding: 1rem;
+        padding: var(--spacing-base);
     }
     .browse-parts__inventory-image {
         width: clamp(50px, 20%, 150px);
@@ -213,7 +212,7 @@ const addToBuild = (part) => {
         border-radius: var(--border-radius);
     }
     .browse-parts__inventory-button {
-        padding: 0.5rem 1rem; 
+        padding: 0.5rem var(--spacing-base); 
         background-color: #007bff;
         color: var(--colour-text-primary); 
         border: 1px solid var(--colour-border);
@@ -226,9 +225,48 @@ const addToBuild = (part) => {
         display: flex; 
         justify-content:flex-end;
         align-items: center;
-        margin-top: 1rem;
+        margin-top: var(--spacing-base);
     }
     .browse-parts__pagination-button {
         margin: 0 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .browse-parts__inventory-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr 100px;
+            padding: var(--spacing-base);
+            font-weight: bold;
+            border-bottom: 2px solid var(--colour-border);
+            border-top: 1px solid var(--colour-border);
+            border-left: 1px solid var(--colour-border);
+            border-right: 1px solid var(--colour-border);
+        }
+        .browse-parts__inventory-list {
+            display: flex;
+            flex-direction: grid; 
+            gap: 0;
+            margin-top: 0;
+            border-left: 1px solid var(--colour-border);
+            border-right: 1px solid var(--colour-border);
+        }
+        .browse-parts__inventory-card {
+            display: grid;
+            grid-template-columns: 1fr 4fr 100px;
+            align-items: center;
+            gap:0;
+            padding: var(--spacing-base);
+            border: none; 
+            border-bottom: 1px solid var(--colour-border);
+        }
+        .browse-parts__inventory-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 0;
+        }
+        .browse-parts__inventory-button {
+            margin-left: 0;
+            font-size: clamp(0.5rem, 0.75rem, 1rem);
+        }
     }
 </style>
