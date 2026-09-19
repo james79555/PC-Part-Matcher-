@@ -10,6 +10,7 @@ const selectedStorageInterface = ref('')
 const selectedSort = ref('')
 const currentPage = ref(1)
 const itemsPerPage = ref(6)
+const isFilterMenuOpen = ref(false)
 
 const uniqueCategories = computed( () => {
     const categories = store.inventory.map(part => part.componentType)
@@ -85,10 +86,10 @@ const addToBuild = (part) => {
 <template>
     <main class="browse-parts">
         <h1>Browse Parts</h1>
-
-        <div class="browse-parts__filter-container" v-if="!store.isLoading && !store.error">
+        <button class="browse-parts__filter-Button" @click="isFilterMenuOpen = !isFilterMenuOpen"> {{  isFilterMenuOpen ? 'Hide Filters' : 'Filter & Sort' }} </button>
+        <aside class="browse-parts__filter-container" :class="{'browse-parts__filter-container--open' : isFilterMenuOpen}" v-if="!store.isLoading && !store.error">
             <div class="browse-parts__filter-group">
-                <label for="category-filter">Filter by Category: </label>
+                <label class="browse-parts__filter-label" for="category-filter"> Category: </label>
                 <select class="browse-parts__filter-select" v-model="selectedCategory">
                     <option value=""> All Parts </option>
                     <option v-for="category in uniqueCategories" :key="category" :value="category">
@@ -97,7 +98,7 @@ const addToBuild = (part) => {
                 </select>
             </div>
             <div class="browse-parts__filter-group">
-                <label for="formFactor-filter">Filter by Form Factor: </label>
+                <label class="browse-parts__filter-label" for="formFactor-filter"> Form Factor: </label>
                 <select class="browse-parts__filter-select" v-model="selectedFormFactor">
                     <option value=""> All Form Factors </option>
                     <option v-for="formFactor in uniqueFormFactors" :key="formFactor" :value="formFactor">
@@ -106,7 +107,7 @@ const addToBuild = (part) => {
                 </select>
             </div>
             <div class="browse-parts__filter-group">
-                <label for="socketType-filter">Filter by Socket Type: </label>
+                <label class="browse-parts__filter-label" for="socketType-filter"> Socket Type: </label>
                 <select class="browse-parts__filter-select" v-model="selectedSocketType">
                     <option value=""> All Socket Types </option>
                     <option v-for="socket in uniqueSockets" :key="socket" :value="socket">
@@ -115,7 +116,7 @@ const addToBuild = (part) => {
                 </select>
             </div>
             <div class="browse-parts__filter-group">
-                <label for="storageInterface-filter">Filter by Storage Interface: </label>
+                <label class="browse-parts__filter-label" for="storageInterface-filter"> Storage Interface: </label>
                 <select class="browse-parts__filter-select" v-model="selectedStorageInterface">
                     <option value=""> All Storage Interfaces </option>
                     <option v-for="storageInterface in uniqueStorageInterfaces" :key="storageInterface" :value="storageInterface">
@@ -124,13 +125,13 @@ const addToBuild = (part) => {
                 </select>
             </div>
             <div class="browse-parts__filter-group">
-                <label for="storageInterface-filter">Sort by Price: </label>
+                <label class="browse-parts__filter-label" for="storageInterface-filter"> Price: </label>
                 <select class="browse-parts__filter-select" v-model="selectedSort">
                     <option value="priceLowHigh">Low to High</option>
                     <option value="priceHighLow">High to Low</option>
                 </select>
             </div>
-        </div>
+        </aside>
 
         <div v-if="store.isLoading">Loading inventory...</div>
         <div v-else-if="store.error">{{ store.error }}</div>
@@ -167,17 +168,44 @@ const addToBuild = (part) => {
     .browse-parts {
         margin: 0.5rem;
     }
-    .browse-parts__filter-container  {
+    .browse-parts__filter-Button {
+        display: block;
+        margin: 1rem auto 0 auto;
+        width: 90%;
+        padding: var(--spacing-base);
+        font-size: 0.75rem;
+        background-color: var(--colour-surface);
+        color: var(--colour-text-primary);
+        border: 1px solid var(--colour-border);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+    }
+    .browse-parts__filter-group {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
-        margin-bottom: 0.5rem
-        
+        gap: 0.5rem;
+    }
+    .browse-parts__filter-container  {
+        display: none;
+        grid-template-columns: auto auto;
+        padding: var(--spacing-base);
+        gap: 0.5rem;
+    }
+    .browse-parts__filter-container--open {
+        display: grid;
+    }
+    .browse-parts__filter-label {
+        display: flex;
+        justify-content: flex-start;
+        font-size: clamp(0.25rem, 0.5rem, 0.75rem);
+        width: 100%;
+
     }
     .browse-parts__filter-select {
         padding: 0.5rem;
-        font-size: 1rem;
-        margin-left: 0.1rem;
+        font-size: clamp(0.25rem, 0.5rem, 0.75rem);
+        width: 100%;
         border-radius: 4px;
         border: 1px solid #ccc
     }
@@ -232,6 +260,15 @@ const addToBuild = (part) => {
     }
 
     @media (min-width: 768px) {
+        .browse-parts__filter-Button {
+            display: none;
+        }
+        .browse-parts__filter-container  {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 0.5rem
+        }
         .browse-parts__inventory-header {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr 1fr 100px;

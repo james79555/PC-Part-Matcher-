@@ -1,20 +1,23 @@
 <script setup>
   import {RouterLink, RouterView} from 'vue-router'
-</script>
+  import {ref} from 'vue'
 
-<style scoped>
-  nav {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem; 
-    margin-bottom: 2rem;
-  }
-</style>
+  const isMobileMenuOpen = ref(false)
+</script>
 
 <template>
   <header class="pc-header">
     <nav class="pc-header__nav">
+      <button class="pc-header__nav-burger" @click="isMobileMenuOpen = !isMobileMenuOpen" aria-label="Toggle navigation menu">
+        <svg viewBox="0 0 100 80" width="20" height="20">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+      </button>
+
       <h1 class="pc-header__nav-title">PC Parts Matcher</h1>
+      
       <RouterLink class="pc-header__nav-link" to="/">Home</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/about">About Us</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/browse">Browse Parts</RouterLink>
@@ -78,9 +81,10 @@
     justify-content: space-between;
   }
   .pc-header__nav {
-    gap: 0;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem; 
+    margin-bottom: 2rem;
     }
   .pc-header__nav-title {
     font-size: 1.5rem;
