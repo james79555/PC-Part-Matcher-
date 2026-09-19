@@ -7,24 +7,35 @@
 
 <template>
   <header class="pc-header">
-    <nav class="pc-header__nav">
-      <button class="pc-header__nav-burger" @click="isMobileMenuOpen = !isMobileMenuOpen" aria-label="Toggle navigation menu">
-        <svg viewBox="0 0 100 80" width="20" height="20">
-          <rect width="100" height="20" rx="8"></rect>
-          <rect y="30" width="100" height="20" rx="8"></rect>
-          <rect y="60" width="100" height="20" rx="8"></rect>
-        </svg>
-      </button>
-
-      <h1 class="pc-header__nav-title">PC Parts Matcher</h1>
-      
+    <button class="pc-header__burger" @click="isMobileMenuOpen = !isMobileMenuOpen" aria-label="Toggle navigation menu">
+      <svg viewBox="0 0 100 80" width="20" height="20">
+        <rect width="100" height="20" rx="8"></rect>
+        <rect y="30" width="100" height="20" rx="8"></rect>
+        <rect y="60" width="100" height="20" rx="8"></rect>
+      </svg>
+    </button> 
+    <h1 class="pc-header__title">PC Parts Matcher</h1>  
+    <nav class="pc-header__nav" :class="{'pc-header__nav--open' : isMobileMenuOpen}">
       <RouterLink class="pc-header__nav-link" to="/">Home</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/about">About Us</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/browse">Browse Parts</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/build">My Build</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/contact">Contact Us</RouterLink>
     </nav>
-    <button class="pc-header__button">Login</button>
+    <div class="pc-header__actions">
+      <button class="pc-header__actions-login">
+        <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.341C11.692 10.79 10.93 10.5 8 10.5s-3.692.29-4.168.555c-.678.355-.831 1.095-.832 1.342h10z"/>
+        </svg>
+      </button>
+      <button class="pc-header__actions-cart">
+        <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </button>
+    </div>
   </header>
 
   <RouterView />
@@ -71,51 +82,49 @@
 </template>
 
 <style scoped>
-
-
   .pc-header {
-    background-color: var(--colour-surface);
-    border-bottom: 1px solid var(--colour-border);
     display: flex; 
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: var(--colour-surface);
+    border-bottom: 1px solid var(--colour-border);
+    margin-bottom: 1rem;
+  }
+  .pc-header__title {
+    font-size: clamp(1rem, 1.25rem,1.5rem);
+    font-weight: bold;
+    padding: 0.5rem; 
   }
   .pc-header__nav {
+    display: none;
+    width: 100%;
+    order: 4;
+  }
+  .pc-header__nav--open {
     display: flex;
-    gap: 1.5rem;
-    padding: 1rem; 
-    margin-bottom: 2rem;
-    }
-  .pc-header__nav-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 1rem 2.5rem; 
-    border-right: 1px solid var(--colour-border);
+    flex-direction: column;
+    background-color: var(--colour-surface);
   }
   .pc-header__nav-link {
-    display: flex;
-    align-items: center;
     text-decoration: none;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     color: var(--color-text-primary);
     font-size: 1rem;
-    border-right: 1px solid var(--colour-border);
+    border-top: 1px solid var(--colour-border);
   }
   .pc-header__nav-link:hover {
     background-color: var(--colour-action);
   }
-  .pc-header__button {
-    background-color: var(--colour-surface);
-    padding: 0.5rem 1.5rem;
-    margin-right: 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--colour-border);
-    border-radius: var(--border-radius);
-    cursor: pointer;
+  .pc-header__actions {
+    display: flex;
+    align-items: center;
   }
-  .pc-header__button:hover {
-    background-color: var(--colour-action);
+  .pc-header__burger, .pc-header__actions-login, .pc-header__actions-cart {
+    padding:0.5rem;
+    margin: 0.5rem
   }
+
 
   .pc-footer__top {
     display: flex;
@@ -161,6 +170,48 @@
     gap: 2.5rem;
   }
   
+  @media (min-width: 768px) {
+    .pc-header {
+      flex-wrap: nowrap;
+    }
+    .pc-header__burger {
+      display: none;
+    }
+    .pc-header__title {
+      font-size: clamp(1.5rem, 1.75rem, 2rem);
+      border-right: 1px solid var(--colour-border);
+      padding-right: 2rem;
+      padding-left: 1rem;   }
+    .pc-header__nav {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      margin-top: 0px;
+      flex-grow: 1;
+      order: 0;
+    }
+    .pc-header__nav-link {
+      padding: 1.5rem 1.5rem;
+      border-top: none;
+      border-right: 1px solid var(--colour-border);
+    }
+    .pc-header__login {
+      display: block;
+      background-color: var(--colour-surface);
+      padding: 0.5rem 1.5rem;
+      margin-right: 1rem;
+      font-size: 1rem;
+      border: 1px solid var(--colour-border);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+    }
+    .pc-header__login:hover {
+    background-color: var(--colour-action);
+    }
+    .pc-header__cart {
+      display: none;
+    }
+  }
 </style>
 
 
