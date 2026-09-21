@@ -149,7 +149,9 @@ const addToBuild = (part) => {
             <article v-for="part in pageinatedInventory" :key="part.id" class="browse-parts__inventory-card">
                 <img class="browse-parts__inventory-image" :src="part.image" :alt="part.name" />
                 <div class="browse-parts__inventory-info">
-                    <p class="browse-parts__inventory-name"> {{ part.name }}</p>
+                    <p class="browse-parts__inventory-name"><RouterLink :to="`/part/${part.id}`">
+                        {{ part.name }}
+                    </RouterLink></p>
                     <p class="browse-parts__inventory-type"> {{ part.componentType }}</p>
                     <p class="browse-parts__inventory-price"> {{ part.price }}</p>
                 </div>
@@ -233,6 +235,12 @@ const addToBuild = (part) => {
         justify-content: center;
         gap: 0.5rem;
         padding: var(--spacing-base);
+        text-decoration: none;
+    }
+    .browse-parts__inventory-name a{
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
     }
     .browse-parts__inventory-image {
         width: clamp(50px, 20%, 150px);
@@ -268,6 +276,12 @@ const addToBuild = (part) => {
             justify-content: space-around;
             align-items: center;
             margin-bottom: 0.5rem
+        }
+        .browse-parts__filter-label {
+            font-size: clamp(0.75rem, 1rem, 1.25rem);
+        }
+        .browse-parts__filter-select {
+            font-size: clamp(0.75rem, 1rem, 1.25rem);
         }
         .browse-parts__inventory-header {
             display: grid;
