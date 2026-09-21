@@ -3,7 +3,6 @@ import {defineStore} from 'pinia'
 
 export const usePcPartsStore = defineStore('pcParts', () => {
     const inventory = ref([])
-    const activeBuild = ref([])
     const isLoading = ref(false)
     const error = ref(null)
     const currency = ref('GBP')
@@ -73,7 +72,6 @@ export const usePcPartsStore = defineStore('pcParts', () => {
 
     return {
         inventory,
-        activeBuild,
         isLoading,
         error,
         currency, 

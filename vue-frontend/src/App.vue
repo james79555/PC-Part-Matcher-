@@ -30,11 +30,7 @@
         <option value="USD">$</option>
         <option value="EUR">€</option>
       </select>
-      <button class="pc-header__actions-login">
-        <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.341C11.692 10.79 10.93 10.5 8 10.5s-3.692.29-4.168.555c-.678.355-.831 1.095-.832 1.342h10z"/>
-        </svg>
-      </button>
+
       <button class="pc-header__actions-cart">
         <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="21" r="1"></circle>

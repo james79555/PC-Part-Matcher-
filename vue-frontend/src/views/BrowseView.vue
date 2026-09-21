@@ -1,8 +1,10 @@
 <script setup>
 import {onMounted, computed, ref, watch} from 'vue'
 import {usePcPartsStore} from '../stores/pcParts'
+import {useBuildStore} from '../stores/buildStore'
 
 const store = usePcPartsStore()
+const buildStore = useBuildStore()
 const selectedCategory = ref('')
 const selectedSocketType = ref('')
 const selectedFormFactor = ref('')
@@ -78,7 +80,7 @@ onMounted( () => {
 })
 
 const addToBuild = (part) => {
-    store.activeBuild.push(part)
+    buildStore.addPart(part)
     alert(part.name + ' added to your build!')
 }
 </script>
@@ -155,7 +157,7 @@ const addToBuild = (part) => {
                     <p class="browse-parts__inventory-type"> {{ part.componentType }}</p>
                     <p class="browse-parts__inventory-price"> {{ store.formattedPrice(part.price) }}</p>
                 </div>
-                <button class="browse-parts__inventory-button"> Add </button>
+                <button class="browse-parts__inventory-button" @click="addToBuild(part)"> Add </button>
             </article>
         </div>
         <nav class="browse-parts__pagination-nav" aria-label="Page Navigation">

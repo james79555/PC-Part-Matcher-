@@ -2,9 +2,11 @@
     import { computed, onMounted} from 'vue';
     import { useRoute } from 'vue-router';
     import { usePcPartsStore } from '../stores/pcParts';
+    import { useBuildStore } from '../stores/buildStore';
 
     const route = useRoute();
     const store = usePcPartsStore();
+    const buildStore = useBuildStore();
 
     onMounted( () => {
         if (store.inventory.length === 0) {
@@ -15,6 +17,13 @@
     const part = computed( () => {
         return store.inventory.find(p => p.id == route.params.id);
     })
+
+    const addToBuild = () => {
+        if (part.value) {
+            buildStore.addPart(part.value);
+            alert(part.value.name + ' added to your build!');
+        }
+    }
 </script>
 
 <template>
@@ -24,7 +33,7 @@
             <h3 class="product-page-details-componentType"> {{ part.componentType }}</h3>
             <h1 class="product-page__details-name">{{ part.name }}</h1>
             <h2 class="product-page__details-price">{{ store.formattedPrice(part.price) }}</h2>
-            <button class="product-page__details-button"> Add to Build </button>
+            <button class="product-page__details-button" @click="addToBuild"> Add to Build </button>
         </div>
         <div class="product-page__description">
             <h2 class="product-page__description-header">Description</h2>
