@@ -1,7 +1,9 @@
 <script setup>
   import {RouterLink, RouterView} from 'vue-router'
   import {ref} from 'vue'
+  import { usePcPartsStore } from './stores/pcParts';
 
+  const store = usePcPartsStore();
   const isMobileMenuOpen = ref(false)
 </script>
 
@@ -23,6 +25,11 @@
       <RouterLink class="pc-header__nav-link" to="/contact">Contact Us</RouterLink>
     </nav>
     <div class="pc-header__actions">
+      <select class="pc-header__actions-currency" :value="store.currency" @change="store.updateCurrency($event.target.value)">
+        <option value="GBP" selcted>£</option>
+        <option value="USD">$</option>
+        <option value="EUR">€</option>
+      </select>
       <button class="pc-header__actions-login">
         <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
           <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.341C11.692 10.79 10.93 10.5 8 10.5s-3.692.29-4.168.555c-.678.355-.831 1.095-.832 1.342h10z"/>
@@ -93,8 +100,10 @@
   }
   .pc-header__title {
     font-size: clamp(1rem, 1.25rem,1.5rem);
-    font-weight: bold;
-    padding: 0.5rem; 
+    flex: 1; 
+    text-align: center;
+    padding: 0 0.5rem;
+    min-width: 0; 
   }
   .pc-header__nav {
     display: none;
@@ -130,9 +139,9 @@
     display: flex;
     align-items: center;
   }
-  .pc-header__burger, .pc-header__actions-login, .pc-header__actions-cart {
+  .pc-header__burger, .pc-header__actions-login, .pc-header__actions-cart, .pc-header__actions-currency {
     padding:0.5rem;
-    margin: 0.5rem
+    margin: 0.5rem;
   }
 
 

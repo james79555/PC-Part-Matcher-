@@ -23,7 +23,7 @@
         <div class="product-page__details">
             <h3 class="product-page-details-componentType"> {{ part.componentType }}</h3>
             <h1 class="product-page__details-name">{{ part.name }}</h1>
-            <h2 class="product-page__details-price">£{{ part.price }}</h2>
+            <h2 class="product-page__details-price">{{ store.formattedPrice(part.price) }}</h2>
             <button class="product-page__details-button"> Add to Build </button>
         </div>
         <div class="product-page__description">

@@ -153,7 +153,7 @@ const addToBuild = (part) => {
                         {{ part.name }}
                     </RouterLink></p>
                     <p class="browse-parts__inventory-type"> {{ part.componentType }}</p>
-                    <p class="browse-parts__inventory-price"> {{ part.price }}</p>
+                    <p class="browse-parts__inventory-price"> {{ store.formattedPrice(part.price) }}</p>
                 </div>
                 <button class="browse-parts__inventory-button"> Add </button>
             </article>

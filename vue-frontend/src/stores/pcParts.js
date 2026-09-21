@@ -6,7 +6,42 @@ export const usePcPartsStore = defineStore('pcParts', () => {
     const activeBuild = ref([])
     const isLoading = ref(false)
     const error = ref(null)
+    const currency = ref('GBP')
+    const currencyRate = ref(1)
 
+    function formattedPrice(basePrice) {
+        if (!basePrice) return '';
+        const converted = (basePrice * currencyRate.value).toFixed(2);
+        
+        let symbol = '£';
+        if (currency.value === 'USD') symbol = '$';
+        if (currency.value === 'EUR') symbol = '€';
+
+        return `${symbol}${converted}`;
+    }
+
+    async function updateCurrency(targetCurrency) {
+        currency.value = targetCurrency;
+
+        if (targetCurrency === 'GBP') {
+            currencyRate.value = 1;
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/frankfurter/latest?amount=1&from=GBP&to=${targetCurrency}`);
+            if (!res.ok) throw new Error('API Network response was not ok');
+
+            const data = await res.json();
+            currencyRate.value = data.rates[targetCurrency];
+        } catch (err) {
+            console.error("Currency API Error: ", err);
+            alert("Unable to fetch live exchnage rates. Defaulting to GBP.");
+            currency.value = 'GBP';
+            currencyRate.value = 1; 
+        }
+    }
+    
     const fetchInventory = async () => {
         isLoading.value= true 
         error.value = null 
@@ -41,6 +76,10 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         activeBuild,
         isLoading,
         error,
+        currency, 
+        currencyRate,
+        formattedPrice, 
+        updateCurrency,
         fetchInventory
     }
 })
