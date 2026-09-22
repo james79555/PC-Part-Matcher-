@@ -6,7 +6,7 @@ These rules are derived from the project's `assignment_spec.txt`. As an AI agent
 Every feature, page, and component you build must contribute to fulfilling the following mandatory requirements:
 - **Architecture:** Component-based architecture with shared state.
 - **Routing:** Implement a landing page and at least three subpages linked via routing.
-- **Design & Styling:** Fully responsive design with global styling configuration. Use BEM and keep naming conventions consistent across the project.
+- **Design & Styling:** Fully responsive design with global styling configuration. Use BEM and keep naming conventions consistent across the project in line with what i have done previously. 
 - **Compliance:** Strict adherence to accessibility (a11y) and GDPR guidelines.
 - **Forms:** Include at least one form with robust input validation.
 - **API Integration:** Integrate an external API to fetch and display data. This must include at least one search filter (e.g., date range, search bar, category filters, or sorting).
