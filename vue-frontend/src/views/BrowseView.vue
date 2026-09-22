@@ -187,7 +187,9 @@ const addToBuild = (part) => {
 
 <style scoped>
     .browse-parts {
-        margin: 0.5rem;
+        padding: var(--spacing-base, 1rem);
+        max-width: 1200px;
+        margin: 0 auto;
     }
     
     .browse-parts__layout {
@@ -364,6 +366,7 @@ const addToBuild = (part) => {
         .browse-parts__layout {
             flex-direction: row;
             align-items: flex-start;
+            gap: 2.5rem; /* Increased spacing between filters and list */
         }
         
         .browse-parts__sidebar {
