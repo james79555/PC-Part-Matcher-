@@ -120,6 +120,7 @@ const shareBuild = async () => {
                 <ul class="build-page__summary-list">
                     <li class="build-page__summary-item"><strong>Total Cost:</strong> <span>{{ pcPartsStore.formattedPrice(buildStore.totalCostRaw) }}</span></li>
                     <li class="build-page__summary-item"><strong>Estimated Wattage:</strong> <span>{{ buildStore.totalWattage }}W</span></li>
+                    <li class="build-page__summary-item" v-if="buildStore.psuWattage > 0"><strong>PSU Wattage:</strong> <span>{{ buildStore.psuWattage }}W</span></li>
                     <li class="build-page__summary-item"><strong>Socket Type:</strong> <span>{{ buildStore.buildSocketType }}</span></li>
                     <li class="build-page__summary-item"><strong>Form Factor:</strong> <span>{{ buildStore.buildFormFactor }}</span></li>
                     <li class="build-page__summary-item"><strong>Storage:</strong> <span>{{ buildStore.buildStorageInterface }}</span></li>

@@ -43,7 +43,15 @@ export const useBuildStore = defineStore('build', () => {
     })
 
     const totalWattage = computed(() => {
-        return parts.value.reduce((total, part) => total + (Number(part.wattage) || 0), 0)
+        return parts.value.reduce((total, part) => {
+            if (part.componentType === 'PSU') return total
+            return total + (Number(part.wattage) || 0)
+        }, 0)
+    })
+
+    const psuWattage = computed(() => {
+        const psu = parts.value.find(p => p.componentType === 'PSU')
+        return psu ? Number(psu.wattage) || 0 : 0
     })
 
     const buildSocketType = computed(() => {
@@ -74,6 +82,7 @@ export const useBuildStore = defineStore('build', () => {
         loadFromIds,
         totalCostRaw,
         totalWattage,
+        psuWattage,
         buildSocketType,
         buildFormFactor,
         buildStorageInterface,
