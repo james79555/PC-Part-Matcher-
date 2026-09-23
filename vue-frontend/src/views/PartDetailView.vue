@@ -28,7 +28,12 @@
 
 <template>
     <div class="product-page" v-if="part">
-        <img class="product-page__image" :src="part.image" :alt="part.name"/>
+        <div class="product-page__image-container">
+            <img class="product-page__image" :src="part.image" :alt="part.name"/>
+            <p v-if="part.image && part.image.includes('placeholder_image')" class="product-page__image-credit">
+                <a href="https://www.vecteezy.com/free-vector/computer-hardware" target="_blank" rel="noopener noreferrer">Computer Hardware Vectors by Vecteezy</a>
+            </p>
+        </div>
         <div class="product-page__details">
             <h3 class="product-page-details-componentType"> {{ part.componentType }}</h3>
             <h1 class="product-page__details-name">{{ part.name }}</h1>
@@ -74,11 +79,26 @@
         align-items: center;
         padding: var(--spacing-base);
     }
+    .product-page__image-container {
+        width: 100%;
+        margin-bottom: var(--spacing-base);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .product-page__image {
         width: 100%;
         border-radius: var(--border-radius);
-        margin-bottom: var(--spacing-base);
         border: 1px solid var(--colour-border);
+    }
+    .product-page__image-credit {
+        margin: 0.5rem 0 0 0;
+        font: 13.0px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        text-align: center;
+    }
+    .product-page__image-credit a {
+        color: #666;
+        text-decoration: underline;
     }
     .product-page__details {
         display: flex;
@@ -156,10 +176,12 @@
                 "specifications specifications";
             gap: 2rem;
         }
-        .product-page__image {
+        .product-page__image-container {
             grid-area: image;
             height: 100%;
             margin-bottom: 0;
+        }
+        .product-page__image {
             object-fit: cover;
         }
         .product-page__details {
