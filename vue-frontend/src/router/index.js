@@ -6,16 +6,25 @@ import BuildView from '../views/BuildView.vue'
 import ContactView from '../views/ContactView.vue'
 import PolicyView from '../views/PolicyView.vue'
 import PartDetailView from '@/views/PartDetailView.vue'
+import FaqView from '../views/FaqView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
   routes: [
     {path: '/', name: 'home', component: HomeView},
     {path: '/about', name: 'about', component: AboutView}, 
     {path: '/browse', name: 'browse', component: BrowseView},
     {path: '/build', name: 'build', component: BuildView},
     {path: '/contact', name: 'contact', component: ContactView},
-    {path: '/part/:id', name: 'part-detail', component: PartDetailView}
+    {path: '/part/:id', name: 'part-detail', component: PartDetailView},
+    {path: '/faq', name: 'faq', component: FaqView}
   ],
 })
 

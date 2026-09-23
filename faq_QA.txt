@@ -1,0 +1,26 @@
+**Getting Started** 
+Q: What is PC Part Matcher?
+A: PC Part Matcher is a free tool that helps you find and compare PC components, check compatibility between parts, and build a complete system. You can browse parts, filter by socket type, form factor, and storage interface, and save your build for reference.
+
+Q: Is PC Part Matcher Free to Use?
+A: Yes, PC Part Matcher is completely free. You can browse parts and create builds without creating an account.
+
+Q: Do i need an account to save my build?
+A: Currently you can build and browse without an account. Account functionality for saving and sharing builds across sessions is planned for a future update.
+
+**Parts & Data**
+Q: How Often Is The Parts Database Updated
+A: We aim to update the parts database regularly as new components are released. If you notice a missing or incorrect part, please use the Contact Us form to report it and our team will investigate.
+
+Q: Can i suggest a part that is missing from the database?
+A: Yes, head to the Contact Us page and select "Missing Parts / Data" as your subject. Include the part name, manufacturer, and any specifications you have and we will add it as soon as possible.
+
+Q: Why Does a Part Show a Different Price Than The Retailer? 
+A: Prices shown are indicative and sourced periodically. Retailer prices change frequently so always confirm the final price on the retailer's website before purchasing.
+
+**Builds & Sharing**
+Q: How Do i Share My Build With Someone 
+A: On the My Build page, use the Share Build Link button to generate a shareable URL. Anyone with the link can view your build and its components.
+
+Q: Can i Have More Than One Build At a Time?
+A: Multiple build support is on our roadmap. Currently the tool supports one active build at a time. You can clear your build and start a new one at any point

@@ -64,9 +64,7 @@
         <ul class="pc-footer__top-nav">
           <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">Compatibility Guide</RouterLink></li>
           <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">PC Building Tips</RouterLink></li>
-          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">Wattage Calculator</RouterLink></li>
-          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">FAQ</RouterLink></li>
-          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">Support</RouterLink></li>
+          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/faq">FAQ</RouterLink></li>
         </ul>
       </div>
     </div>

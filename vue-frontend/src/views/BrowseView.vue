@@ -2,10 +2,12 @@
 import {onMounted, computed, ref, watch} from 'vue'
 import {usePcPartsStore} from '../stores/pcParts'
 import {useBuildStore} from '../stores/buildStore'
+import {useRoute} from 'vue-router'
 
 const store = usePcPartsStore()
 const buildStore = useBuildStore()
-const selectedCategory = ref('')
+const route = useRoute()
+const selectedCategory = ref(route.query.category || '')
 const selectedSocketType = ref('')
 const selectedFormFactor = ref('')
 const selectedStorageInterface = ref('')
@@ -78,6 +80,10 @@ watch(filteredInventory, () => {
 onMounted( () => {
     if (store.inventory.length === 0) {
         store.fetchInventory()
+    }
+    
+    if (route.query.category) {
+        selectedCategory.value = route.query.category
     }
 })
 
