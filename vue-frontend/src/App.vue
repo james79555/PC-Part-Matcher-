@@ -25,21 +25,11 @@
       <RouterLink class="pc-header__nav-link" to="/build">My Build</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/contact">Contact Us</RouterLink>
     </nav>
-    <div class="pc-header__actions">
-      <select class="pc-header__actions-currency" :value="store.currency" @change="store.updateCurrency($event.target.value)">
-        <option value="GBP" selcted>£</option>
-        <option value="USD">$</option>
-        <option value="EUR">€</option>
-      </select>
-
-      <button class="pc-header__actions-cart">
-        <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-      </button>
-    </div>
+    <select class="pc-header__currency" :value="store.currency" @change="store.updateCurrency($event.target.value)">
+      <option value="GBP" selcted>£</option>
+      <option value="USD">$</option>
+      <option value="EUR">€</option>
+    </select>
   </header>
 
   <CookieBanner />
@@ -131,11 +121,7 @@
       border-radius: var(--border-radius);
       cursor: pointer;
     }
-  .pc-header__actions {
-    display: flex;
-    align-items: center;
-  }
-  .pc-header__burger, .pc-header__actions-login, .pc-header__actions-cart, .pc-header__actions-currency {
+  .pc-header__burger,.pc-header__currency {
     padding:0.5rem;
     margin: 0.5rem;
   }
