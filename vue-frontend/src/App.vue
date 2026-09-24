@@ -64,7 +64,7 @@
       <p>&copy; 2026 PC Parts Matcher. All rights reserved.</p>
       <div class="pc-footer__bottom-policy">
         <RouterLink class="pc-footer__bottom-link" to="/privacy-policy">Privacy Policy</RouterLink>
-        <p>Terms of Service</p>
+        <RouterLink class="pc-footer__bottom-link" to="/terms-of-service">Terms of Service</RouterLink>
         <RouterLink class="pc-footer__bottom-link" to="/cookie-policy">Cookies Policy</RouterLink>
       </div>
     </div>

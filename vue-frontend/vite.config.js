@@ -15,12 +15,13 @@ export default defineConfig({
     },
   },
   server: {
+    allowHosts: ['screen-punctual-sculpture.ngrok-free.dev'],
     port: 8080,
     strictPort: true,
     proxy: {
       '/api/frankfurter': {
         target: 'https://api.frankfurter.app',
-        changeOrigin: true, 
+        changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/frankfurter/, '')
       }
     }
