@@ -63,7 +63,7 @@
     <div class="pc-footer__bottom">
       <p>&copy; 2026 PC Parts Matcher. All rights reserved.</p>
       <div class="pc-footer__bottom-policy">
-        <p>Privacy Policy</p>
+        <RouterLink class="pc-footer__bottom-link" to="/privacy-policy">Privacy Policy</RouterLink>
         <p>Terms of Service</p>
         <RouterLink class="pc-footer__bottom-link" to="/cookie-policy">Cookies Policy</RouterLink>
       </div>
