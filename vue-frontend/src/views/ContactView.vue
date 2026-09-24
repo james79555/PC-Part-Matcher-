@@ -237,7 +237,7 @@ const handleSubmit = async () => {
     text-align: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--colour-border, #ddd);
+    border-bottom: 2px solid var(--colour-border);
 }
 
 .contact-page__header h1 {
@@ -246,7 +246,7 @@ const handleSubmit = async () => {
 }
 
 .contact-page__header p {
-    color: var(--colour-text-secondary, #666);
+    color: var(--colour-text-secondary);
     font-size: 1.1rem;
 }
 
@@ -273,9 +273,9 @@ const handleSubmit = async () => {
 
 .contact-page__form-section {
     order: 2; /* Form second */
-    background: var(--colour-surface, #fff);
-    border: 1px solid var(--colour-border, #ddd);
-    border-radius: var(--border-radius, 8px);
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--border-radius);
     padding: 1.5rem;
 }
 
@@ -346,7 +346,7 @@ const handleSubmit = async () => {
 .contact-page__form-group select,
 .contact-page__form-group textarea {
     padding: 0.75rem;
-    border: 1px solid var(--colour-border, #ccc);
+    border: 1px solid var(--colour-border);
     border-radius: 4px;
     font-size: 1rem;
     font-family: inherit;
@@ -361,9 +361,9 @@ const handleSubmit = async () => {
     border-color: #007bff;
 }
 
-.contact-page__input--error {
-    border-color: #dc3545 !important;
-    background-color: #fff8f8 !important;
+.contact-page__form-group .contact-page__input--error {
+    border-color: #dc3545;
+    background-color: #fff8f8;
 }
 
 .contact-page__error-text {
@@ -373,11 +373,11 @@ const handleSubmit = async () => {
     font-weight: bold;
 }
 
-.contact-page__checkbox-label {
+.contact-page__form-group .contact-page__checkbox-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-weight: normal !important;
+    font-weight: normal;
     cursor: pointer;
 }
 
@@ -418,16 +418,16 @@ const handleSubmit = async () => {
 
 /* Info Cards */
 .contact-page__info-card {
-    background: var(--colour-surface, #fff);
-    border: 1px solid var(--colour-border, #ddd);
-    border-radius: var(--border-radius, 8px);
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--border-radius);
     padding: 1.5rem;
 }
 
 .contact-page__info-card h3 {
     margin-top: 0;
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--colour-border, #eee);
+    border-bottom: 1px solid var(--colour-border);
     padding-bottom: 0.5rem;
     font-size: 1.25rem;
 }

@@ -9,6 +9,7 @@ import PartDetailView from '@/views/PartDetailView.vue'
 import FaqView from '../views/FaqView.vue'
 import CompatibilityGuideView from '../views/CompatibilityGuideView.vue'
 import PcBuildingTipsView from '../views/PcBuildingTipsView.vue'
+import CookiePolicyView from '../views/CookiePolicyView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +29,8 @@ const router = createRouter({
     {path: '/part/:id', name: 'part-detail', component: PartDetailView},
     {path: '/faq', name: 'faq', component: FaqView},
     {path: '/compatibility-guide', name: 'compatibility-guide', component: CompatibilityGuideView},
-    {path: '/pc-building-tips', name: 'pc-building-tips', component: PcBuildingTipsView}
+    {path: '/pc-building-tips', name: 'pc-building-tips', component: PcBuildingTipsView},
+    {path: '/cookie-policy', name: 'cookie-policy', component: CookiePolicyView}
   ],
 })
 

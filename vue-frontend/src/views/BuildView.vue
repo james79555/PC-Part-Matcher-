@@ -176,9 +176,9 @@ const shareBuild = async () => {
 .build-page__card {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--colour-border, #ddd);
-    border-radius: var(--border-radius, 8px);
-    background: var(--colour-surface, #fff);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--border-radius);
+    background: var(--colour-surface);
     overflow: hidden;
     position: relative; /* Position context for the absolute remove button */
     padding-right: 40px; /* Leave space on the right for the absolute button */
@@ -245,7 +245,7 @@ const shareBuild = async () => {
     justify-content: space-between;
     padding: 0.5rem;
     background-color: #f8f9fa;
-    border-top: 1px solid var(--colour-border, #ddd);
+    border-top: 1px solid var(--colour-border);
     gap: 0.25rem;
 }
 
@@ -284,7 +284,7 @@ const shareBuild = async () => {
     background: #fff0f0;
     color: #dc3545;
     border: none;
-    border-left: 1px solid var(--colour-border, #ddd);
+    border-left: 1px solid var(--colour-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,9 +307,9 @@ const shareBuild = async () => {
 
 /* Build Summary */
 .build-page__summary {
-    background: var(--colour-surface, #fff);
-    border: 1px solid var(--colour-border, #ddd);
-    border-radius: var(--border-radius, 8px);
+    background: var(--colour-surface);
+    border: 1px solid var(--colour-border);
+    border-radius: var(--border-radius);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -319,7 +319,7 @@ const shareBuild = async () => {
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    border-bottom: 1px solid var(--colour-border, #eee);
+    border-bottom: 1px solid var(--colour-border);
     padding-bottom: 0.5rem;
 }
 
@@ -359,7 +359,7 @@ const shareBuild = async () => {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: var(--border-radius, 4px);
+    border-radius: var(--border-radius);
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;

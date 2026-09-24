@@ -73,15 +73,15 @@ import { RouterLink } from 'vue-router'
 .about {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-base, 1rem);
-  color: var(--colour-text-primary, #333);
+  padding: 0 var(--spacing-base);
+  color: var(--colour-text-primary);
 }
 
 .about__section-title {
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -91,11 +91,9 @@ import { RouterLink } from 'vue-router'
 
 /* Header Section */
 .about__header {
-  background-color: #e9e9e9; /* Low fidelity grey band */
-  padding: 4rem 2rem;
-  margin: 0 calc(-50vw + 50%); /* Full width bleed trick */
-  display: flex;
-  justify-content: center;
+  background-color: #e9e9e9;
+  padding: 2rem var(--spacing-base);
+  margin-bottom: 2rem;
 }
 
 .about__header-content {
@@ -107,7 +105,7 @@ import { RouterLink } from 'vue-router'
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 1rem;
   display: block;
 }
@@ -121,7 +119,7 @@ import { RouterLink } from 'vue-router'
 
 .about__header-description {
   font-size: 1.1rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin: 0;
   max-width: 600px;
   line-height: 1.5;
@@ -133,7 +131,7 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   gap: 2rem;
   padding: 4rem 0;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
 }
 
 .about__mission-text {
@@ -143,7 +141,7 @@ import { RouterLink } from 'vue-router'
 .about__mission-text p {
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: var(--colour-text-secondary, #555);
+  color: var(--colour-text-secondary);
 }
 
 .about__mission-image-wrapper {
@@ -182,8 +180,8 @@ import { RouterLink } from 'vue-router'
 .about__stats-grid {
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid var(--colour-border, #ddd);
-  background-color: var(--colour-surface, #fff);
+  border: 1px solid var(--colour-border);
+  background-color: var(--colour-surface);
 }
 
 .about__stat-card {
@@ -193,7 +191,7 @@ import { RouterLink } from 'vue-router'
   justify-content: center;
   padding: 2rem 1rem;
   text-align: center;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
 }
 
 .about__stat-card:last-child {
@@ -204,12 +202,12 @@ import { RouterLink } from 'vue-router'
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--colour-text-primary, #333);
+  color: var(--colour-text-primary);
 }
 
 .about__stat-label {
   font-size: 0.9rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
 }
 
 /* Contact CTA Banner */
@@ -232,7 +230,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .about__contact-description {
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin: 0;
 }
 
@@ -261,7 +259,6 @@ import { RouterLink } from 'vue-router'
   .about__stats {
     background-color: #eee;
     padding: 3rem 2rem;
-    margin: 0 calc(-50vw + 50%); /* Full width bleed trick */
     margin-bottom: 4rem;
   }
   

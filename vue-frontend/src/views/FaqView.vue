@@ -87,7 +87,7 @@ const faqCategories = [
 
 <style scoped>
 .faq-page {
-  padding: var(--spacing-base, 1rem);
+  padding: var(--spacing-base);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -96,7 +96,7 @@ const faqCategories = [
   text-align: center;
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--colour-border, #ddd);
+  border-bottom: 2px solid var(--colour-border);
 }
 
 .faq-page__header h1 {
@@ -105,7 +105,7 @@ const faqCategories = [
 }
 
 .faq-page__header p {
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   font-size: 1.1rem;
 }
 
@@ -126,9 +126,9 @@ const faqCategories = [
 }
 
 .faq-page__item {
-  background: var(--colour-surface, #fff);
-  border: 1px solid var(--colour-border, #ddd);
-  border-radius: var(--border-radius, 8px);
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
@@ -168,9 +168,9 @@ const faqCategories = [
 
 .faq-page__answer {
   padding: 1rem 1.5rem;
-  border-top: 1px solid var(--colour-border, #ddd);
+  border-top: 1px solid var(--colour-border);
   background-color: white;
-  color: var(--colour-text-secondary, #444);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
 }
 
@@ -183,8 +183,8 @@ const faqCategories = [
   margin-top: 3rem;
   padding: 2.5rem;
   background-color: #f8f9fa;
-  border-radius: var(--border-radius, 8px);
-  border: 1px solid var(--colour-border, #ddd);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--colour-border);
 }
 
 .faq-page__contact h2 {
@@ -194,7 +194,7 @@ const faqCategories = [
 }
 
 .faq-page__contact p {
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 1.5rem;
 }
 

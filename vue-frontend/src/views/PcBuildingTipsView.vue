@@ -178,8 +178,8 @@ const scrollToPhase = (number) => {
 .tips {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--spacing-base, 1rem);
-  color: var(--colour-text-primary, #333);
+  padding: 0 var(--spacing-base);
+  color: var(--colour-text-primary);
 }
 
 /* ===== Breadcrumb ===== */
@@ -188,7 +188,7 @@ const scrollToPhase = (number) => {
   margin-top: 1.5rem;
   margin-bottom: var(--spacing-base);
   font-size: 0.875rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   text-decoration: none;
 }
 
@@ -206,7 +206,7 @@ const scrollToPhase = (number) => {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 0.5rem;
 }
 
@@ -219,7 +219,7 @@ const scrollToPhase = (number) => {
 
 .tips__header-description {
   font-size: 1rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
   max-width: 560px;
   margin: 0;
@@ -231,7 +231,7 @@ const scrollToPhase = (number) => {
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 3rem;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
 }
 
 .tips__phase-tab {
@@ -240,10 +240,10 @@ const scrollToPhase = (number) => {
   text-align: left;
   background-color: #f5f5f5;
   border: none;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
   cursor: pointer;
   font-size: 0.9rem;
-  color: var(--colour-text-primary, #333);
+  color: var(--colour-text-primary);
   transition: background-color 0.15s ease;
 }
 
@@ -275,7 +275,7 @@ const scrollToPhase = (number) => {
   margin-top: 0;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
 }
 
 .tips__phase-number {
@@ -293,10 +293,10 @@ const scrollToPhase = (number) => {
 
 /* ===== Tip Cards ===== */
 .tips__tip-card {
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 1.25rem;
   margin-bottom: 0.75rem;
-  background-color: var(--colour-surface, #fff);
+  background-color: var(--colour-surface);
 }
 
 .tips__tip-heading {
@@ -308,13 +308,13 @@ const scrollToPhase = (number) => {
 .tips__tip-body {
   margin: 0;
   line-height: 1.6;
-  color: var(--colour-text-secondary, #555);
+  color: var(--colour-text-secondary);
   font-size: 0.9rem;
 }
 
 /* ===== Related Resources ===== */
 .tips__related {
-  border-top: 1px solid var(--colour-border, #ddd);
+  border-top: 1px solid var(--colour-border);
   padding-top: 2rem;
   margin-bottom: 4rem;
 }
@@ -323,7 +323,7 @@ const scrollToPhase = (number) => {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
@@ -336,11 +336,11 @@ const scrollToPhase = (number) => {
 
 .tips__related-card {
   display: block;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 1.25rem;
   text-decoration: none;
   color: inherit;
-  background-color: var(--colour-surface, #fff);
+  background-color: var(--colour-surface);
   transition: background-color 0.15s ease;
 }
 
@@ -356,7 +356,7 @@ const scrollToPhase = (number) => {
 .tips__related-card-desc {
   margin: 0;
   font-size: 0.875rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
 }
 
@@ -375,15 +375,15 @@ const scrollToPhase = (number) => {
 
   .tips__phase-tab {
     flex: 1;
-    border: 1px solid var(--colour-border, #ddd);
+    border: 1px solid var(--colour-border);
     border-right: none;
     text-align: center;
     font-size: 0.85rem;
   }
 
   .tips__phase-tab:last-child {
-    border-right: 1px solid var(--colour-border, #ddd);
-    border-bottom: 1px solid var(--colour-border, #ddd);
+    border-right: 1px solid var(--colour-border);
+    border-bottom: 1px solid var(--colour-border);
   }
 
   /* Related resources become a 3-column grid */

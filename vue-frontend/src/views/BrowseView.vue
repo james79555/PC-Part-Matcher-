@@ -193,7 +193,7 @@ const addToBuild = (part) => {
 
 <style scoped>
     .browse-parts {
-        padding: var(--spacing-base, 1rem);
+        padding: var(--spacing-base);
         max-width: 1200px;
         margin: 0 auto;
     }
@@ -214,9 +214,9 @@ const addToBuild = (part) => {
     }
     
     .browse-parts__sidebar-box {
-        background-color: var(--colour-surface, #f9f9f9);
+        background-color: var(--colour-surface);
         padding: var(--spacing-base);
-        border: 1px solid var(--colour-border, #ddd);
+        border: 1px solid var(--colour-border);
         border-radius: var(--border-radius);
         display: flex;
         flex-direction: column;
@@ -226,7 +226,7 @@ const addToBuild = (part) => {
     .browse-parts__sidebar-title {
         margin: 0;
         font-size: 1.25rem;
-        border-bottom: 1px solid var(--colour-border, #eee);
+        border-bottom: 1px solid var(--colour-border);
         padding-bottom: 0.5rem;
     }
     
@@ -244,8 +244,8 @@ const addToBuild = (part) => {
         border: none;
     }
     
-    .browse-parts__filter-group--price {
-        flex-direction: row !important; /* side by side for price sort */
+    .browse-parts__filter-group.browse-parts__filter-group--price {
+        flex-direction: row; /* side by side for price sort */
         align-items: center;
         margin: 0;
     }
@@ -376,8 +376,8 @@ const addToBuild = (part) => {
         }
         
         .browse-parts__sidebar {
-            display: block !important; /* Always show on desktop */
-            width: 320px; /* Increased from 250px for more horizontal space */
+            display: block; /* Always show on desktop */
+            width: 320px;
             flex-shrink: 0;
         }
         

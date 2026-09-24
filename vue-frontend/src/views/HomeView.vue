@@ -113,15 +113,15 @@ import { RouterLink } from 'vue-router'
 .home {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-base, 1rem);
-  color: var(--colour-text-primary, #333);
+  padding: 0 var(--spacing-base);
+  color: var(--colour-text-primary);
 }
 
 .home__section-title {
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -144,7 +144,7 @@ import { RouterLink } from 'vue-router'
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 1rem;
 }
 
@@ -156,7 +156,7 @@ import { RouterLink } from 'vue-router'
 
 .home__hero-description {
   font-size: 1.1rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 2rem;
   max-width: 500px;
 }
@@ -206,8 +206,8 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   gap: 2rem;
   padding: 2rem 0;
-  border-top: 1px solid var(--colour-border, #ddd);
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-top: 1px solid var(--colour-border);
+  border-bottom: 1px solid var(--colour-border);
   margin-bottom: 3rem;
 }
 
@@ -232,7 +232,7 @@ import { RouterLink } from 'vue-router'
 
 .home__feature-description {
   font-size: 0.9rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin: 0;
 }
 
@@ -248,9 +248,9 @@ import { RouterLink } from 'vue-router'
 }
 
 .home__step-card {
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 2rem;
-  background-color: var(--colour-surface, #fff);
+  background-color: var(--colour-surface);
 }
 
 .home__step-number {
@@ -268,7 +268,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .home__step-description {
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
   margin: 0;
 }
@@ -302,13 +302,13 @@ import { RouterLink } from 'vue-router'
 }
 
 .home__category-card {
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--colour-surface, #fff);
+  background-color: var(--colour-surface);
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s ease;
@@ -344,7 +344,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .home__cta-description {
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin: 0;
 }
 
@@ -401,7 +401,7 @@ import { RouterLink } from 'vue-router'
   }
   
   .home__feature:first-child {
-    border-right: 1px solid var(--colour-border, #ddd);
+    border-right: 1px solid var(--colour-border);
   }
 
   .home__steps-grid {

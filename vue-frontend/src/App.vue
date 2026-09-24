@@ -73,7 +73,7 @@
       <div class="pc-footer__bottom-policy">
         <p>Privacy Policy</p>
         <p>Terms of Service</p>
-        <p>Cookies Policy</p>
+        <RouterLink class="pc-footer__bottom-link" to="/cookie-policy">Cookies Policy</RouterLink>
       </div>
     </div>
       
@@ -185,6 +185,13 @@
   .pc-footer__bottom-policy {
     display: flex;
     gap: 2.5rem;
+  }
+  .pc-footer__bottom-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  .pc-footer__bottom-link:hover {
+    text-decoration: underline;
   }
   
   @media (min-width: 768px) {

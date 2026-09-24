@@ -112,8 +112,8 @@ const sections = [
 .compat-guide {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 var(--spacing-base, 1rem);
-  color: var(--colour-text-primary, #333);
+  padding: 0 var(--spacing-base);
+  color: var(--colour-text-primary);
 }
 
 /* ===== Breadcrumb ===== */
@@ -122,7 +122,7 @@ const sections = [
   margin-top: 1.5rem;
   margin-bottom: var(--spacing-base);
   font-size: 0.875rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   text-decoration: none;
 }
 
@@ -141,7 +141,7 @@ const sections = [
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   margin-bottom: 0.5rem;
 }
 
@@ -154,7 +154,7 @@ const sections = [
 
 .compat-guide__header-description {
   font-size: 1rem;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
   max-width: 520px;
   margin: 0;
@@ -163,7 +163,7 @@ const sections = [
 /* ===== Usage Box ===== */
 .compat-guide__usage-box {
   background-color: #f5f5f5;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -175,7 +175,7 @@ const sections = [
 
 .compat-guide__usage-text {
   margin: 0;
-  color: var(--colour-text-secondary, #555);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
 }
 
@@ -190,7 +190,7 @@ const sections = [
   align-items: center;
   gap: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -202,7 +202,7 @@ const sections = [
 /* Summary paragraph box */
 .compat-guide__section-summary {
   background-color: #f9f9f9;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   padding: 1.25rem;
   margin-bottom: 1rem;
 }
@@ -216,7 +216,7 @@ const sections = [
 .compat-guide__detail-row {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   margin-bottom: 0.5rem;
 }
 
@@ -225,14 +225,14 @@ const sections = [
   font-size: 0.85rem;
   padding: 0.75rem 1rem;
   background-color: #f0f0f0;
-  border-bottom: 1px solid var(--colour-border, #ddd);
+  border-bottom: 1px solid var(--colour-border);
 }
 
 .compat-guide__detail-value {
   padding: 0.75rem 1rem;
   margin: 0;
   line-height: 1.5;
-  color: var(--colour-text-secondary, #555);
+  color: var(--colour-text-secondary);
 }
 
 /* ===== Bottom CTA ===== */
@@ -242,7 +242,7 @@ const sections = [
   gap: 1.5rem;
   padding: 2rem;
   background-color: #f5f5f5;
-  border: 1px solid var(--colour-border, #ddd);
+  border: 1px solid var(--colour-border);
   margin-bottom: 4rem;
 }
 
@@ -253,7 +253,7 @@ const sections = [
 
 .compat-guide__cta-description {
   margin: 0;
-  color: var(--colour-text-secondary, #666);
+  color: var(--colour-text-secondary);
   line-height: 1.5;
 }
 
@@ -286,7 +286,7 @@ const sections = [
     display: flex;
     align-items: center;
     border-bottom: none;
-    border-right: 1px solid var(--colour-border, #ddd);
+    border-right: 1px solid var(--colour-border);
   }
 
   .compat-guide__detail-value {
