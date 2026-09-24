@@ -2,6 +2,7 @@
   import {RouterLink, RouterView} from 'vue-router'
   import {ref} from 'vue'
   import { usePcPartsStore } from './stores/pcParts';
+  import CookieBanner from './components/CookieBanner.vue'
 
   const store = usePcPartsStore();
   const isMobileMenuOpen = ref(false)
@@ -41,6 +42,7 @@
     </div>
   </header>
 
+  <CookieBanner />
   <RouterView />
 
   <footer class="pc-footer">
