@@ -8,6 +8,7 @@ import PolicyView from '../views/PolicyView.vue'
 import PartDetailView from '@/views/PartDetailView.vue'
 import FaqView from '../views/FaqView.vue'
 import CompatibilityGuideView from '../views/CompatibilityGuideView.vue'
+import PcBuildingTipsView from '../views/PcBuildingTipsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +27,8 @@ const router = createRouter({
     {path: '/contact', name: 'contact', component: ContactView},
     {path: '/part/:id', name: 'part-detail', component: PartDetailView},
     {path: '/faq', name: 'faq', component: FaqView},
-    {path: '/compatibility-guide', name: 'compatibility-guide', component: CompatibilityGuideView}
+    {path: '/compatibility-guide', name: 'compatibility-guide', component: CompatibilityGuideView},
+    {path: '/pc-building-tips', name: 'pc-building-tips', component: PcBuildingTipsView}
   ],
 })
 

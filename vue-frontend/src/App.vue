@@ -63,7 +63,7 @@
         <h3 class="pc-footer__top-header">Resources</h3>
         <ul class="pc-footer__top-nav">
           <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/compatibility-guide">Compatibility Guide</RouterLink></li>
-          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/">PC Building Tips</RouterLink></li>
+          <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/pc-building-tips">PC Building Tips</RouterLink></li>
           <li class="pc-footer__top-item"><RouterLink class="pc-footer__top-link" to="/faq">FAQ</RouterLink></li>
         </ul>
       </div>
