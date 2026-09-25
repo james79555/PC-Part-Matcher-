@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Urbanist:wght@600;700;800&display=swap');
+
 :root {
-    --colour-bg-base: #f5f5f5;
-    --colour-surface: #f9f9f9;
-    --colour-text-primary: #333333;
-    --colour-text-secondary: #666666;
-    --colour-border: #cccccc;
+    --colour-bg-base: #ffffff;
+    --colour-surface: #ffffff;
     
-    --font-primary: Arial, sans-serif;
+    --colour-primary: #1b4bf1;
+    --colour-primary-hover: #153bc2;
+    --colour-secondary: #0c1938;
+    
+    --colour-text-primary: #1a1a1a;
+    --colour-text-secondary: #666666;
+    
+    --colour-border: #e2e8f0;
+    
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Urbanist', sans-serif;
+    
     --spacing-base: 1rem;
-    --border-radius: 4px;
+    --border-radius: 8px;
 }
 
 * {
@@ -15,3 +25,12 @@
     margin: 0;
 }
 
+body {
+    font-family: var(--font-primary);
+    color: var(--colour-text-primary);
+    background-color: var(--colour-bg-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
