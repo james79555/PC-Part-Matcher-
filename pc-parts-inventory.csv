@@ -1,0 +1,18 @@
+Title,component_type,price,socket_type,memory_standard,form_factor,wattage,storage_interface
+AMD Ryzen 5 7600X,CPU,200,AM5,,,105,
+Intel Core i5-13600K,CPU,280,LGA1700,,,125,
+AMD Ryzen 5 5600X,CPU,140,AM4,,,65,
+MSI PRO B650M-A WIFI,Motherboard,150,AM5,DDR5,Micro-ATX,40,M.2 NVMe
+ASUS Prime Z790-P WIFI,Motherboard,200,LGA1700,DDR5,ATX,50, M.2 NVMe
+Gigabyte B550M DS3H,Motherboard,90,AM4,DDR4,Micro-ATX,30, M.2 NVMe
+Corsair Vengeance 32GB,RAM,100,,DDR5,,5,
+G.Skill Ripjaws V 16GB,RAM,40,,DDR4,,5,
+NVIDIA GeForce RTX 4060,GPU,290,,,,115,
+AMD Radeon RX 7800 XT,GPU,500,,,,263,
+Corsair 4000D Airflow,Case,90,,,ATX,0,
+Cooler Master Q300L,Case,45,,,Micro-ATX,0,
+Corsair RM750e,PSU,100,,,,750,
+EVGA 500 W1,PSU,50,,,,500,
+Samsung 970 EVO Plus 1TB,Storage,70,,,,5, M.2 NVMe
+Crucial MX500 1TB 2.5",Storage,60,,,,5, SATA
+Seagate Barracuda 2TB HDD,Storage,50,,,,10, SATA
