@@ -62,7 +62,8 @@ export const usePcPartsStore = defineStore('pcParts', () => {
                 formFactor: part.formFactor,
                 wattage: part.wattage,
                 storageInterface: part.storageInterface,
-                image: part.image || '../public/placeholder_image.jpg'
+                image: part.image || '../public/placeholder_image.jpg',
+                description: part.description || 'To be Added...'
             }))
         } catch (err) {
             error.value = `Failed to fetch hardware data: ${err.message}`

@@ -42,7 +42,7 @@
         </div>
         <div class="product-page__description">
             <h2 class="product-page__description-header">Description</h2>
-            <p class="product-page__description-text">To be Added...</p>
+            <p class="product-page__description-text"> {{ part.description }}</p>
         </div>
         <div class="product-page__specifications">
             <table class="product-page__specifications-table">

@@ -46,7 +46,8 @@ function pcpm_get_parts( WP_REST_Request $request ) {
                 'memoryType'       => get_field( 'memory_type' ),
                 'formFactor'       => get_field( 'form_factor' ),
                 'wattage'          => (float) get_field( 'wattage' ),
-                'storageInterface' => get_field( 'storage_interface' )
+                'storageInterface' => get_field( 'storage_interface' ),
+                'description'      => get_field( 'description' ) ? get_field( 'description' ) : ''
             );
         }
         wp_reset_postdata();
