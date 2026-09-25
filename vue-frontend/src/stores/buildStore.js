@@ -22,6 +22,34 @@ export const useBuildStore = defineStore('build', () => {
         parts.value = []
     }
     
+    function isPartCompatible(part) {
+        // Check socket
+        if (part.socketType) {
+            const conflictingSocket = parts.value.find(p => p.socketType && p.socketType !== part.socketType)
+            if (conflictingSocket) return false
+        }
+        
+        // Check memory
+        if (part.memoryType) {
+            const conflictingMemory = parts.value.find(p => p.memoryType && p.memoryType !== part.memoryType)
+            if (conflictingMemory) return false
+        }
+        
+        // Check form factor (Motherboard vs Case primarily)
+        if (part.formFactor) {
+            const conflictingFormFactor = parts.value.find(p => p.formFactor && p.formFactor !== part.formFactor)
+            if (conflictingFormFactor) return false
+        }
+        
+        // Check storage interface
+        if (part.storageInterface) {
+            const conflictingStorage = parts.value.find(p => p.storageInterface && p.storageInterface !== part.storageInterface)
+            if (conflictingStorage) return false
+        }
+
+        return true
+    }
+    
     // For sharing via URL
     function loadFromIds(idsArray) {
         const pcPartsStore = usePcPartsStore()
@@ -80,6 +108,7 @@ export const useBuildStore = defineStore('build', () => {
         removePart,
         clearBuild,
         loadFromIds,
+        isPartCompatible,
         totalCostRaw,
         totalWattage,
         psuWattage,

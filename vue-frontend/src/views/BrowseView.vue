@@ -2,11 +2,12 @@
 import {onMounted, computed, ref, watch} from 'vue'
 import {usePcPartsStore} from '../stores/pcParts'
 import {useBuildStore} from '../stores/buildStore'
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 
 const store = usePcPartsStore()
 const buildStore = useBuildStore()
 const route = useRoute()
+const router = useRouter()
 const selectedCategory = ref(route.query.category || '')
 const selectedSocketType = ref('')
 const selectedFormFactor = ref('')
@@ -91,6 +92,20 @@ const addToBuild = (part) => {
     buildStore.addPart(part)
     alert(part.name + ' added to your build!')
 }
+
+const clearFilters = () => {
+    selectedCategory.value = ''
+    selectedSocketType.value = ''
+    selectedFormFactor.value = ''
+    selectedStorageInterface.value = ''
+    selectedSort.value = 'priceLowHigh'
+    currentPage.value = 1
+    
+    // Clear URL queries if present
+    if (Object.keys(route.query).length > 0) {
+        router.replace({ path: '/browse' })
+    }
+}
 </script>
 
 <template>
@@ -104,6 +119,8 @@ const addToBuild = (part) => {
                 <div class="browse-parts__sidebar-box">
                     <h3 class="browse-parts__sidebar-title">Filters</h3>
                     
+                    <button class="browse-parts__clear-btn" @click="clearFilters">Clear All Filters</button>
+
                     <div class="browse-parts__filter-group">
                         <label class="browse-parts__filter-label" for="category-filter"> Category: </label>
                         <select class="browse-parts__filter-select" id="category-filter" v-model="selectedCategory">
@@ -228,6 +245,22 @@ const addToBuild = (part) => {
         font-size: 1.25rem;
         border-bottom: 1px solid var(--colour-border);
         padding-bottom: 0.5rem;
+    }
+    
+    .browse-parts__clear-btn {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #fff0f0;
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    
+    .browse-parts__clear-btn:hover {
+        background-color: #ffe0e0;
     }
     
     .browse-parts__main {

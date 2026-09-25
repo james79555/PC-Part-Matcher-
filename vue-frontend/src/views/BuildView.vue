@@ -91,7 +91,11 @@ const shareBuild = async () => {
                         
                         <div class="build-page__card-info">
                             <h3 class="build-page__card-title"><RouterLink :to="`/part/${part.id}`">{{ part.name }}</RouterLink></h3>
-                            <p class="build-page__card-type">{{ part.componentType }}</p>
+                            <div class="build-page__card-type-row">
+                                <p class="build-page__card-type">{{ part.componentType }}</p>
+                                <span v-if="buildStore.isPartCompatible(part)" class="build-page__badge build-page__badge--compatible">✅ Compatible</span>
+                                <span v-else class="build-page__badge build-page__badge--warning">⚠️ Conflict Detected</span>
+                            </div>
                         </div>
                         
                         <div class="build-page__card-price-section">
@@ -217,10 +221,38 @@ const shareBuild = async () => {
     text-decoration: underline;
 }
 
+.build-page__card-type-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .build-page__card-type {
     margin: 0;
     font-size: 0.85rem;
     color: #666;
+}
+
+.build-page__badge {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.build-page__badge--compatible {
+    background-color: #e6f4ea;
+    color: #1e8e3e;
+    border: 1px solid #ceead6;
+}
+
+.build-page__badge--warning {
+    background-color: #fce8e6;
+    color: #d93025;
+    border: 1px solid #fad2cf;
 }
 
 .build-page__card-price-section {
