@@ -2,18 +2,8 @@
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
-/**
- * isVisible controls whether the banner is rendered at all.
- * It starts as false so there is no flash of the banner while
- * localStorage is being checked on mount.
- */
 const isVisible = ref(false)
 
-/**
- * On mount, check if the user has already given or declined consent.
- * If the 'cookie_consent' key does not exist in localStorage,
- * the user has not yet responded so we show the banner.
- */
 onMounted(() => {
   const stored = localStorage.getItem('cookie_consent')
   if (!stored) {
@@ -21,13 +11,6 @@ onMounted(() => {
   }
 })
 
-/**
- * handleConsent is called when either button is clicked.
- * It writes the user's decision to localStorage so the banner
- * does not reappear on future visits, then hides the banner.
- *
- * @param {'accepted' | 'declined'} decision - The user's choice
- */
 const handleConsent = (decision) => {
   localStorage.setItem('cookie_consent', decision)
   isVisible.value = false
@@ -35,11 +18,6 @@ const handleConsent = (decision) => {
 </script>
 
 <template>
-  <!--
-    v-if means the banner is completely removed from the DOM once
-    the user has responded — not just hidden with CSS.
-    role="dialog" and aria-label help screen readers identify it.
-  -->
   <section
     v-if="isVisible"
     class="cookie-banner"
@@ -57,13 +35,13 @@ const handleConsent = (decision) => {
     </div>
     <div class="cookie-banner__actions">
       <button
-        class="cookie-banner__btn cookie-banner__btn--decline"
+        class="cookie-banner__btn cookie-banner__btn--secondary"
         @click="handleConsent('declined')"
       >
         Decline
       </button>
       <button
-        class="cookie-banner__btn cookie-banner__btn--accept"
+        class="cookie-banner__btn cookie-banner__btn--primary"
         @click="handleConsent('accepted')"
       >
         Accept
@@ -73,89 +51,110 @@ const handleConsent = (decision) => {
 </template>
 
 <style scoped>
-/* ===== Banner Container ===== */
-/*
-  position: fixed keeps the bar anchored to the bottom of the
-  viewport regardless of scroll position. z-index: 100 ensures
-  it sits above all page content.
-*/
 .cookie-banner {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #2a2a2a;
-  color: #f0f0f0;
-  padding: 1rem var(--spacing-base);
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--colour-secondary);
+  color: white;
+  padding: 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   z-index: 100;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(12, 25, 56, 0.4);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ===== Content (left side) ===== */
 .cookie-banner__title {
-  font-size: 0.95rem;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-top: 0;
   margin-bottom: 0.25rem;
-  color: #ffffff;
+  color: white;
 }
 
 .cookie-banner__description {
-  font-size: 0.85rem;
-  color: #cccccc;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.4;
   margin: 0;
 }
 
 .cookie-banner__policy-link {
-  color: #cccccc;
+  color: white;
   text-decoration: underline;
+  margin-left: 0.25rem;
 }
 
 .cookie-banner__policy-link:hover {
-  color: #ffffff;
+  color: var(--colour-primary);
 }
 
-/* ===== Action Buttons ===== */
 .cookie-banner__actions {
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 1rem;
   align-items: center;
   flex-shrink: 0;
+  width: 100%;
 }
 
 .cookie-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 100px;
   cursor: pointer;
-  border: 1px solid #888;
-  transition: opacity 0.15s ease;
+  transition: all 0.2s ease;
+  width: 100%;
+  border: none;
 }
 
-.cookie-banner__btn:hover {
-  opacity: 0.85;
+.cookie-banner__btn--primary {
+  background-color: var(--colour-primary);
+  color: white;
 }
 
-.cookie-banner__btn--decline {
+.cookie-banner__btn--primary:hover {
+  background-color: var(--colour-primary-hover);
+  transform: translateY(-2px);
+}
+
+.cookie-banner__btn--secondary {
   background-color: transparent;
-  color: #cccccc;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.cookie-banner__btn--accept {
-  background-color: #e0e0e0;
-  color: #1a1a1a;
-  border-color: #e0e0e0;
+.cookie-banner__btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* ===== Desktop — single row layout ===== */
 @media (min-width: 768px) {
   .cookie-banner {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 1.25rem 2rem;
+    gap: 2rem;
+  }
+  
+  .cookie-banner__actions {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .cookie-banner__btn {
+    width: auto;
+    min-width: 120px;
   }
 }
 </style>
