@@ -23,18 +23,27 @@ const storageItems = [
 </script>
 
 <template>
-  <main class="cookie-policy">
-    <!-- Breadcrumb -->
-    <RouterLink to="/" class="cookie-policy__back">&larr; Back to Home</RouterLink>
+  <div class="cookie-policy">
+    <!-- Top White Section -->
+    <section class="cookie-policy__hero">
+      <div class="cookie-policy__container">
+        <div class="cookie-policy__breadcrumb">
+          <RouterLink to="/" class="cookie-policy__breadcrumb-link">Home</RouterLink>
+          <span class="cookie-policy__breadcrumb-separator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+          <span class="cookie-policy__breadcrumb-current">Cookie Policy</span>
+        </div>
 
-    <!-- Page Header -->
-    <header class="cookie-policy__header">
-      <span class="cookie-policy__header-label">LEGAL</span>
-      <h1 class="cookie-policy__header-title">Cookie &amp; Storage Policy</h1>
-      <p class="cookie-policy__header-date">Last updated: September 2026</p>
-    </header>
+        <span class="cookie-policy__subtitle">LEGAL</span>
+        <h1 class="cookie-policy__title">Cookie &amp; Storage Policy</h1>
+        <p class="cookie-policy__description">Last updated: September 2026</p>
+      </div>
+    </section>
 
-    <div class="cookie-policy__body">
+    <!-- Main Grey Section -->
+    <section class="cookie-policy__content">
+      <div class="cookie-policy__container">
 
       <!-- Section: What is a cookie -->
       <section class="cookie-policy__section">
@@ -117,64 +126,89 @@ const storageItems = [
         <RouterLink to="/contact" class="cookie-policy__cta-btn">Contact Us &rarr;</RouterLink>
       </section>
 
-    </div>
-  </main>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped>
 /* ===== Base Layout ===== */
 .cookie-policy {
+  width: 100%;
+}
+
+.cookie-policy__container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 var(--spacing-base);
-  color: var(--colour-text-primary);
 }
 
-/* ===== Breadcrumb ===== */
-.cookie-policy__back {
-  display: inline-block;
-  margin-top: 1.5rem;
-  margin-bottom: var(--spacing-base);
+/* ===== Hero Section ===== */
+.cookie-policy__hero {
+  background-color: white;
+  padding: 2rem 0 4rem 0;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.cookie-policy__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.875rem;
-  color: var(--colour-text-secondary);
-  text-decoration: none;
-}
-
-.cookie-policy__back:hover {
-  text-decoration: underline;
-}
-
-/* ===== Page Header ===== */
-.cookie-policy__header {
-  background-color: #e9e9e9;
-  padding: 2rem var(--spacing-base);
   margin-bottom: 3rem;
 }
 
-.cookie-policy__header-label {
+.cookie-policy__breadcrumb-link {
+  color: var(--colour-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cookie-policy__breadcrumb-link:hover {
+  color: var(--colour-primary);
+}
+
+.cookie-policy__breadcrumb-separator {
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+}
+
+.cookie-policy__breadcrumb-current {
+  font-weight: 700;
+  color: var(--colour-text-primary);
+}
+
+.cookie-policy__subtitle {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--colour-text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.cookie-policy__header-title {
-  font-size: 2rem;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-}
-
-.cookie-policy__header-date {
-  margin: 0;
   font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--colour-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.cookie-policy__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--colour-secondary);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.cookie-policy__description {
+  font-size: 1.125rem;
   color: var(--colour-text-secondary);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
 }
 
 /* ===== Page Body ===== */
-.cookie-policy__body {
-  padding-bottom: 4rem;
+.cookie-policy__content {
+  background-color: #f8fafc; /* Very light grey */
+  padding: 4rem 0 6rem 0;
 }
 
 /* ===== Sections ===== */
@@ -296,9 +330,10 @@ const storageItems = [
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
-  background-color: #f5f5f5;
-  border: 2px dashed #aaa;
+  background-color: var(--colour-surface);
+  border: 2px solid var(--colour-border);
   margin-top: 3rem;
+  border-radius: 16px;
 }
 
 .cookie-policy__cta-title {
@@ -314,9 +349,11 @@ const storageItems = [
 
 .cookie-policy__cta-btn {
   display: inline-block;
+  font-family: var(--font-heading);
   padding: 0.75rem 1.5rem;
-  background-color: #dcdcdc;
-  color: #333;
+  background-color: var(--colour-primary);
+  border-radius: 100px; 
+  color: white;
   text-decoration: none;
   font-weight: bold;
   border: 1px solid #aaa;
@@ -325,14 +362,6 @@ const storageItems = [
 
 /* ===== Desktop ===== */
 @media (min-width: 768px) {
-  .cookie-policy__header {
-    padding: 3rem 2rem;
-  }
-  
-  .cookie-policy__header-title {
-    font-size: 2.5rem;
-  }
-
   /* Storage table becomes 2-column side by side */
   .cookie-policy__table-row {
     flex-direction: row;

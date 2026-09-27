@@ -78,18 +78,27 @@ const relatedLinks = [
 </script>
 
 <template>
-  <main class="terms">
-    <!-- Breadcrumb -->
-    <RouterLink to="/" class="terms__back">&larr; Back to Home</RouterLink>
+  <div class="terms">
+    <!-- Top White Section -->
+    <section class="terms__hero">
+      <div class="terms__container">
+        <div class="terms__breadcrumb">
+          <RouterLink to="/" class="terms__breadcrumb-link">Home</RouterLink>
+          <span class="terms__breadcrumb-separator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+          <span class="terms__breadcrumb-current">Terms of Service</span>
+        </div>
 
-    <!-- Page Header — uniform with Cookie Policy and Privacy Policy -->
-    <header class="terms__header">
-      <span class="terms__header-label">LEGAL</span>
-      <h1 class="terms__header-title">Terms of Service</h1>
-      <p class="terms__header-date">Last updated: September 2026</p>
-    </header>
+        <span class="terms__subtitle">LEGAL</span>
+        <h1 class="terms__title">Terms of Service</h1>
+        <p class="terms__description">Last updated: September 2026</p>
+      </div>
+    </section>
 
-    <div class="terms__body">
+    <!-- Main Grey Section -->
+    <section class="terms__content">
+      <div class="terms__container">
 
       <!-- Iterate over sections array -->
       <section
@@ -117,64 +126,89 @@ const relatedLinks = [
         </div>
       </section>
 
-    </div>
-  </main>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped>
 /* ===== Base Layout ===== */
 .terms {
+  width: 100%;
+}
+
+.terms__container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 var(--spacing-base);
-  color: var(--colour-text-primary);
 }
 
-/* ===== Breadcrumb ===== */
-.terms__back {
-  display: inline-block;
-  margin-top: 1.5rem;
-  margin-bottom: var(--spacing-base);
+/* ===== Hero Section ===== */
+.terms__hero {
+  background-color: white;
+  padding: 2rem 0 4rem 0;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.terms__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.875rem;
-  color: var(--colour-text-secondary);
-  text-decoration: none;
-}
-
-.terms__back:hover {
-  text-decoration: underline;
-}
-
-/* ===== Page Header — matches CookiePolicyView and PrivacyPolicyView ===== */
-.terms__header {
-  background-color: #e9e9e9;
-  padding: 2rem var(--spacing-base);
   margin-bottom: 3rem;
 }
 
-.terms__header-label {
+.terms__breadcrumb-link {
+  color: var(--colour-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.terms__breadcrumb-link:hover {
+  color: var(--colour-primary);
+}
+
+.terms__breadcrumb-separator {
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+}
+
+.terms__breadcrumb-current {
+  font-weight: 700;
+  color: var(--colour-text-primary);
+}
+
+.terms__subtitle {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--colour-text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.terms__header-title {
-  font-size: 2rem;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-}
-
-.terms__header-date {
-  margin: 0;
   font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--colour-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.terms__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--colour-secondary);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.terms__description {
+  font-size: 1.125rem;
   color: var(--colour-text-secondary);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
 }
 
 /* ===== Page Body ===== */
-.terms__body {
-  padding-bottom: 4rem;
+.terms__content {
+  background-color: #f8fafc; /* Very light grey */
+  padding: 4rem 0 6rem 0;
 }
 
 /* ===== Sections ===== */
@@ -248,14 +282,6 @@ const relatedLinks = [
 
 /* ===== Desktop ===== */
 @media (min-width: 768px) {
-  .terms__header {
-    padding: 3rem 2rem;
-  }
-
-  .terms__header-title {
-    font-size: 2.5rem;
-  }
-
   .terms__related-grid {
     flex-direction: row;
   }

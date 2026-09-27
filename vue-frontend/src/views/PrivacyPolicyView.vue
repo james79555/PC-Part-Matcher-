@@ -82,18 +82,27 @@ const relatedLinks = [
 </script>
 
 <template>
-  <main class="privacy-policy">
-    <!-- Breadcrumb -->
-    <RouterLink to="/" class="privacy-policy__back">&larr; Back to Home</RouterLink>
+  <div class="privacy-policy">
+    <!-- Top White Section -->
+    <section class="privacy-policy__hero">
+      <div class="privacy-policy__container">
+        <div class="privacy-policy__breadcrumb">
+          <RouterLink to="/" class="privacy-policy__breadcrumb-link">Home</RouterLink>
+          <span class="privacy-policy__breadcrumb-separator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </span>
+          <span class="privacy-policy__breadcrumb-current">Privacy Policy</span>
+        </div>
 
-    <!-- Page Header — uniform with Cookie Policy page -->
-    <header class="privacy-policy__header">
-      <span class="privacy-policy__header-label">LEGAL</span>
-      <h1 class="privacy-policy__header-title">Privacy Policy</h1>
-      <p class="privacy-policy__header-date">Last updated: September 2026</p>
-    </header>
+        <span class="privacy-policy__subtitle">LEGAL</span>
+        <h1 class="privacy-policy__title">Privacy Policy</h1>
+        <p class="privacy-policy__description">Last updated: September 2026</p>
+      </div>
+    </section>
 
-    <div class="privacy-policy__body">
+    <!-- Main Grey Section -->
+    <section class="privacy-policy__content">
+      <div class="privacy-policy__container">
 
       <!-- Iterate over sections array -->
       <section
@@ -129,64 +138,89 @@ const relatedLinks = [
         </div>
       </section>
 
-    </div>
-  </main>
+      </div>
+    </section>
+  </div>
 </template>
 
 <style scoped>
 /* ===== Base Layout ===== */
 .privacy-policy {
+  width: 100%;
+}
+
+.privacy-policy__container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 var(--spacing-base);
-  color: var(--colour-text-primary);
 }
 
-/* ===== Breadcrumb ===== */
-.privacy-policy__back {
-  display: inline-block;
-  margin-top: 1.5rem;
-  margin-bottom: var(--spacing-base);
+/* ===== Hero Section ===== */
+.privacy-policy__hero {
+  background-color: white;
+  padding: 2rem 0 4rem 0;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.privacy-policy__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.875rem;
-  color: var(--colour-text-secondary);
-  text-decoration: none;
-}
-
-.privacy-policy__back:hover {
-  text-decoration: underline;
-}
-
-/* ===== Page Header — matches CookiePolicyView exactly ===== */
-.privacy-policy__header {
-  background-color: #e9e9e9;
-  padding: 2rem var(--spacing-base);
   margin-bottom: 3rem;
 }
 
-.privacy-policy__header-label {
+.privacy-policy__breadcrumb-link {
+  color: var(--colour-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.privacy-policy__breadcrumb-link:hover {
+  color: var(--colour-primary);
+}
+
+.privacy-policy__breadcrumb-separator {
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+}
+
+.privacy-policy__breadcrumb-current {
+  font-weight: 700;
+  color: var(--colour-text-primary);
+}
+
+.privacy-policy__subtitle {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--colour-text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.privacy-policy__header-title {
-  font-size: 2rem;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-}
-
-.privacy-policy__header-date {
-  margin: 0;
   font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--colour-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.privacy-policy__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--colour-secondary);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.privacy-policy__description {
+  font-size: 1.125rem;
   color: var(--colour-text-secondary);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
 }
 
 /* ===== Page Body ===== */
-.privacy-policy__body {
-  padding-bottom: 4rem;
+.privacy-policy__content {
+  background-color: #f8fafc; /* Very light grey */
+  padding: 4rem 0 6rem 0;
 }
 
 /* ===== Sections ===== */
@@ -273,14 +307,6 @@ const relatedLinks = [
 
 /* ===== Desktop ===== */
 @media (min-width: 768px) {
-  .privacy-policy__header {
-    padding: 3rem 2rem;
-  }
-
-  .privacy-policy__header-title {
-    font-size: 2.5rem;
-  }
-
   .privacy-policy__related-grid {
     flex-direction: row;
   }

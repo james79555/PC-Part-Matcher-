@@ -243,7 +243,6 @@
   background-color: var(--colour-secondary);
   color: white;
   padding: 4rem var(--spacing-base) 2rem;
-  margin-top: 4rem;
 }
 
 .pc-footer__container {

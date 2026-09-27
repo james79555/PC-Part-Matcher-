@@ -251,6 +251,7 @@ const handleSubmit = async () => {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 /* 
