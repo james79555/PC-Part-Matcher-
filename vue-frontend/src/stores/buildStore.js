@@ -84,22 +84,22 @@ export const useBuildStore = defineStore('build', () => {
 
     const buildSocketType = computed(() => {
         const sockets = parts.value.map(p => p.socketType).filter(s => s)
-        return [...new Set(sockets)].join(', ') || 'N/A'
+        return [...new Set(sockets)].join(', ')
     })
 
     const buildFormFactor = computed(() => {
         const forms = parts.value.map(p => p.formFactor).filter(f => f)
-        return [...new Set(forms)].join(', ') || 'N/A'
+        return [...new Set(forms)].join(', ')
     })
 
     const buildStorageInterface = computed(() => {
         const interfaces = parts.value.map(p => p.storageInterface).filter(i => i)
-        return [...new Set(interfaces)].join(', ') || 'N/A'
+        return [...new Set(interfaces)].join(', ')
     })
 
     const buildMemoryType = computed(() => {
         const memory = parts.value.map(p => p.memoryType).filter(m => m)
-        return [...new Set(memory)].join(', ') || 'N/A'
+        return [...new Set(memory)].join(', ')
     })
 
     return {
