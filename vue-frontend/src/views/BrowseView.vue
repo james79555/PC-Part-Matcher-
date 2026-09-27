@@ -586,6 +586,7 @@ const clearFilters = () => {
 
 .browse-parts__actions-col {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 0.5rem;
 }
@@ -698,7 +699,7 @@ const clearFilters = () => {
 
     .browse-parts__inventory-header {
         display: grid;
-        grid-template-columns: 80px 2.5fr 1fr 1fr max-content;
+        grid-template-columns: 80px 2.5fr 1fr 1fr 200px;
         align-items: center;
         gap: 1.5rem;
         padding: 1rem 1.5rem;
@@ -725,7 +726,7 @@ const clearFilters = () => {
     
     .browse-parts__inventory-card {
         display: grid;
-        grid-template-columns: 80px 2.5fr 1fr 1fr max-content;
+        grid-template-columns: 80px 2.5fr 1fr 1fr 200px;
         align-items: center;
         gap: 1.5rem;
         padding: 1.5rem;
