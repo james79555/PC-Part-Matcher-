@@ -11,9 +11,16 @@
 </script>
 
 <template>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header class="pc-header">
     <div class="pc-header__left">
-      <button class="pc-header__burger" @click="isMobileMenuOpen = !isMobileMenuOpen" aria-label="Toggle navigation menu">
+      <button 
+        class="pc-header__burger" 
+        @click="isMobileMenuOpen = !isMobileMenuOpen" 
+        aria-label="Toggle navigation menu"
+        :aria-expanded="isMobileMenuOpen"
+        aria-controls="mobile-menu"
+      >
         <svg viewBox="0 0 100 80" width="20" height="20">
           <rect width="100" height="20" rx="8"></rect>
           <rect y="30" width="100" height="20" rx="8"></rect>
@@ -25,7 +32,7 @@
       </RouterLink>
     </div>
 
-    <nav class="pc-header__nav" :class="{'pc-header__nav--open' : isMobileMenuOpen}">
+    <nav id="mobile-menu" class="pc-header__nav" :class="{'pc-header__nav--open' : isMobileMenuOpen}">
       <RouterLink class="pc-header__nav-link" to="/" active-class="pc-header__nav-link--active" @click="isMobileMenuOpen = false">Home</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/about" active-class="pc-header__nav-link--active" @click="isMobileMenuOpen = false">About Us</RouterLink>
       <RouterLink class="pc-header__nav-link" to="/browse" active-class="pc-header__nav-link--active" @click="isMobileMenuOpen = false">Browse Parts</RouterLink>
@@ -49,7 +56,7 @@
 
   <CookieBanner />
   
-  <div class="page-container">
+  <div id="main-content" class="page-container" tabindex="-1">
     <RouterView />
   </div>
 
@@ -105,6 +112,28 @@
 </template>
 
 <style scoped>
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--colour-primary);
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+  transition: top 0.2s;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+#main-content {
+  outline: none; /* Prevent outline when focused via skip link */
+}
+
 /* Header */
 .pc-header {
   display: flex;

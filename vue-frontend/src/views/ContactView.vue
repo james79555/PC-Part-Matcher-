@@ -121,26 +121,26 @@ const handleSubmit = async () => {
                     <div class="contact-page__form-row">
                         <div class="contact-page__form-group">
                             <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" v-model="form.firstName" :class="{'contact-page__input--error': errors.firstName}">
-                            <span class="contact-page__error-text" v-if="errors.firstName">{{ errors.firstName }}</span>
+                            <input type="text" id="firstName" v-model="form.firstName" :class="{'contact-page__input--error': errors.firstName}" :aria-invalid="!!errors.firstName" aria-describedby="firstName-error">
+                            <span class="contact-page__error-text" id="firstName-error" v-if="errors.firstName">{{ errors.firstName }}</span>
                         </div>
                         <div class="contact-page__form-group">
                             <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" v-model="form.lastName" :class="{'contact-page__input--error': errors.lastName}">
-                            <span class="contact-page__error-text" v-if="errors.lastName">{{ errors.lastName }}</span>
+                            <input type="text" id="lastName" v-model="form.lastName" :class="{'contact-page__input--error': errors.lastName}" :aria-invalid="!!errors.lastName" aria-describedby="lastName-error">
+                            <span class="contact-page__error-text" id="lastName-error" v-if="errors.lastName">{{ errors.lastName }}</span>
                         </div>
                     </div>
 
                     <div class="contact-page__form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" v-model="form.email" :class="{'contact-page__input--error': errors.email}">
-                        <span class="contact-page__error-text" v-if="errors.email">{{ errors.email }}</span>
+                        <input type="email" id="email" v-model="form.email" :class="{'contact-page__input--error': errors.email}" :aria-invalid="!!errors.email" aria-describedby="email-error">
+                        <span class="contact-page__error-text" id="email-error" v-if="errors.email">{{ errors.email }}</span>
                     </div>
 
                     <div class="contact-page__form-row">
                         <div class="contact-page__form-group">
                             <label for="subject">Subject *</label>
-                            <select id="subject" v-model="form.subject" :class="{'contact-page__input--error': errors.subject}">
+                            <select id="subject" v-model="form.subject" :class="{'contact-page__input--error': errors.subject}" :aria-invalid="!!errors.subject" aria-describedby="subject-error">
                                 <option value="" disabled>Select a subject</option>
                                 <option value="General Enquiry">General Enquiry</option>
                                 <option value="Part Compatibility">Part Compatibility</option>
@@ -148,22 +148,22 @@ const handleSubmit = async () => {
                                 <option value="Bug Report">Bug Report</option>
                                 <option value="Partnership">Partnership</option>
                             </select>
-                            <span class="contact-page__error-text" v-if="errors.subject">{{ errors.subject }}</span>
+                            <span class="contact-page__error-text" id="subject-error" v-if="errors.subject">{{ errors.subject }}</span>
                         </div>
                     </div>
 
                     <div class="contact-page__form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" rows="6" v-model="form.message" :class="{'contact-page__input--error': errors.message}"></textarea>
-                        <span class="contact-page__error-text" v-if="errors.message">{{ errors.message }}</span>
+                        <textarea id="message" rows="6" v-model="form.message" :class="{'contact-page__input--error': errors.message}" :aria-invalid="!!errors.message" aria-describedby="message-error"></textarea>
+                        <span class="contact-page__error-text" id="message-error" v-if="errors.message">{{ errors.message }}</span>
                     </div>
 
                     <div class="contact-page__form-group contact-page__form-group--checkbox">
                         <label class="contact-page__checkbox-label">
-                            <input type="checkbox" v-model="form.agreePolicy">
+                            <input type="checkbox" v-model="form.agreePolicy" :aria-invalid="!!errors.agreePolicy" aria-describedby="policy-error">
                             <span>I agree to the <RouterLink to="/">Privacy Policy</RouterLink> *</span>
                         </label>
-                        <span class="contact-page__error-text" v-if="errors.agreePolicy">{{ errors.agreePolicy }}</span>
+                        <span class="contact-page__error-text" id="policy-error" v-if="errors.agreePolicy">{{ errors.agreePolicy }}</span>
                     </div>
 
                     <button type="submit" class="contact-page__submit-btn" :disabled="isSubmitting">
