@@ -150,10 +150,6 @@ const handleSubmit = async () => {
                             </select>
                             <span class="contact-page__error-text" v-if="errors.subject">{{ errors.subject }}</span>
                         </div>
-                        <div class="contact-page__form-group">
-                            <label for="orderRef">Order/Build Reference (Optional)</label>
-                            <input type="text" id="orderRef" v-model="form.orderRef">
-                        </div>
                     </div>
 
                     <div class="contact-page__form-group">
