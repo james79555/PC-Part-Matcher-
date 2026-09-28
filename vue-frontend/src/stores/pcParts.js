@@ -1,6 +1,9 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+/**
+ * Pinia store managing the global inventory of PC parts and currency conversion.
+ */
 export const usePcPartsStore = defineStore('pcParts', () => {
     const inventory = ref([])
     const isLoading = ref(false)
@@ -8,6 +11,11 @@ export const usePcPartsStore = defineStore('pcParts', () => {
     const currency = ref('GBP')
     const currencyRate = ref(1)
 
+    /**
+     * Formats a raw price integer/float into a localized currency string.
+     * @param {number} basePrice The base price in GBP.
+     * @returns {string} The formatted price string with the correct currency symbol.
+     */
     function formattedPrice(basePrice) {
         if (!basePrice) return '';
         const converted = (basePrice * currencyRate.value).toFixed(2);
@@ -19,6 +27,10 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         return `${symbol}${converted}`;
     }
 
+    /**
+     * Fetches live exchange rates and updates the global currency multiplier.
+     * @param {string} targetCurrency The currency code to convert to (e.g. 'USD', 'EUR').
+     */
     async function updateCurrency(targetCurrency) {
         currency.value = targetCurrency;
 
@@ -41,6 +53,10 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         }
     }
 
+    /**
+     * Fetches the entire hardware inventory from the custom WordPress REST API.
+     * Maps the response data into the internal inventory state array.
+     */
     const fetchInventory = async () => {
         isLoading.value = true
         error.value = null
@@ -49,9 +65,9 @@ export const usePcPartsStore = defineStore('pcParts', () => {
             const res = await fetch('http://pc-part-matcher.local/wp-json/pc-part-matcher/v1/parts')
             if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`)
 
-            // The API now returns the exact shape we need
-            const data = await res.json()
-
+            // The API returns a highly structured array, but we use .map() here 
+            // to defensively ensure every single property exists before Vue tries to render it.
+            // This prevents crashes if a field in the database was accidentally left blank.
             inventory.value = data.map(part => ({
                 id: part.id,
                 name: part.name,
@@ -62,6 +78,8 @@ export const usePcPartsStore = defineStore('pcParts', () => {
                 formFactor: part.formFactor,
                 wattage: part.wattage,
                 storageInterface: part.storageInterface,
+                // Fallback logic: If the part has no image, try to use the WordPress injected URL.
+                // If even that fails (we are running locally outside WP), just use the root placeholder.
                 image: part.image || (window.wpThemeUrl ? `${window.wpThemeUrl}/dist/placeholder_image.jpg` : '/placeholder_image.jpg'),
                 description: part.description || 'To be Added...'
             }))

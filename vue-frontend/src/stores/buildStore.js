@@ -2,6 +2,11 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { usePcPartsStore } from './pcParts'
 
+/**
+ * Pinia store managing the user's active PC build.
+ * Includes logic for compatibility checking, cost calculation, and wattage estimation.
+ * State is persisted to localStorage via pinia-plugin-persistedstate.
+ */
 export const useBuildStore = defineStore('build', () => {
     // State
     const parts = ref([])
@@ -19,6 +24,12 @@ export const useBuildStore = defineStore('build', () => {
     }
 
     // Actions
+
+    /**
+     * Adds a part to the user's build if it isn't already included.
+     * Triggers a toast notification.
+     * @param {Object} part The PC part object to add.
+     */
     function addPart(part) {
         const exists = parts.value.find(p => p.id === part.id)
         if (!exists) {
@@ -37,35 +48,49 @@ export const useBuildStore = defineStore('build', () => {
         parts.value = []
     }
     
+    /**
+     * Checks if a given part is compatible with the *current* parts in the build.
+     * Validates Socket Type, Memory Type, Form Factor, and Storage Interface.
+     * @param {Object} part The PC part object to check.
+     * @returns {boolean} True if compatible, false if a conflict is detected.
+     */
     function isPartCompatible(part) {
-        // Check socket
+        // We check compatibility by looking at the parts ALREADY in the build.
+        // If the new part has a 'socketType', we search the build to see if there's 
+        // a part with a DIFFERENT socketType. If there is, it's incompatible!
         if (part.socketType) {
             const conflictingSocket = parts.value.find(p => p.socketType && p.socketType !== part.socketType)
             if (conflictingSocket) return false
         }
         
-        // Check memory
+        // Same logic for Memory (e.g. DDR4 vs DDR5)
         if (part.memoryType) {
             const conflictingMemory = parts.value.find(p => p.memoryType && p.memoryType !== part.memoryType)
             if (conflictingMemory) return false
         }
         
-        // Check form factor (Motherboard vs Case primarily)
+        // Check form factor (e.g. ATX motherboard fitting inside a Micro-ATX case will trigger this)
         if (part.formFactor) {
             const conflictingFormFactor = parts.value.find(p => p.formFactor && p.formFactor !== part.formFactor)
             if (conflictingFormFactor) return false
         }
         
-        // Check storage interface
+        // Check storage interface (e.g. NVMe vs SATA)
         if (part.storageInterface) {
             const conflictingStorage = parts.value.find(p => p.storageInterface && p.storageInterface !== part.storageInterface)
             if (conflictingStorage) return false
         }
 
+        // If it passes all checks, it's completely compatible!
         return true
     }
     
     // For sharing via URL
+
+    /**
+     * Loads a build from an array of part IDs (used when a user shares their build URL).
+     * @param {Array<string|number>} idsArray Array of PC part IDs.
+     */
     function loadFromIds(idsArray) {
         const pcPartsStore = usePcPartsStore()
         const newBuild = []
