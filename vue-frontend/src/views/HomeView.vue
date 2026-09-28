@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+const basePath = window.wpThemeUrl ? `${window.wpThemeUrl}/dist/` : '/'
 </script>
 
 <template>
@@ -15,7 +16,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/browse" class="home__hero-btn">Build your PC &rarr;</RouterLink>
       </div>
       <div class="home__hero-image-wrapper">
-        <img src="/home-image.jpg" alt="Computer Processor" class="home__hero-image" />
+        <img :src="`${basePath}home-image.jpg`" alt="Computer Processor" class="home__hero-image" />
         <p class="home__hero-image-credit">
           <a href="https://www.pexels.com/photo/computer-processor-2582935/" target="_blank" rel="noopener noreferrer">Image by Athena Sandrini</a>
         </p>

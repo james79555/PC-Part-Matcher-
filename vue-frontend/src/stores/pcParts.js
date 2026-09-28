@@ -62,7 +62,7 @@ export const usePcPartsStore = defineStore('pcParts', () => {
                 formFactor: part.formFactor,
                 wattage: part.wattage,
                 storageInterface: part.storageInterface,
-                image: part.image || '../public/placeholder_image.jpg',
+                image: part.image || (window.wpThemeUrl ? `${window.wpThemeUrl}/dist/placeholder_image.jpg` : '/placeholder_image.jpg'),
                 description: part.description || 'To be Added...'
             }))
         } catch (err) {

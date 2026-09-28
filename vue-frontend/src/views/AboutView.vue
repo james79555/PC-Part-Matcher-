@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+const basePath = window.wpThemeUrl ? `${window.wpThemeUrl}/dist/` : '/'
 </script>
 
 <template>
@@ -34,7 +35,7 @@ import { RouterLink } from 'vue-router'
         </p>
       </div>
       <div class="about__mission-image-wrapper">
-        <img src="/aboutUs-image.jpg" alt="Team / Office Photo" class="about__mission-image" />
+        <img :src="`${basePath}aboutUs-image.jpg`" alt="Team / Office Photo" class="about__mission-image" />
         <p class="about__mission-image-credit">
           <a href="https://www.pexels.com/photo/person-in-teal-long-sleeve-shirt-holding-white-and-black-chess-piece-4705628/" target="_blank" rel="noopener noreferrer">Image by cottonbro studio</a>
         </p>
