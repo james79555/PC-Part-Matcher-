@@ -60,6 +60,13 @@
     <RouterView />
   </div>
 
+  <Transition name="toast">
+    <div v-if="buildStore.notification" class="toast-notification" role="status" aria-live="polite">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      {{ buildStore.notification }}
+    </div>
+  </Transition>
+
   <footer class="pc-footer">
     <div class="pc-footer__container">
       <div class="pc-footer__top">
@@ -128,6 +135,40 @@
 
 #main-content {
   outline: none; /* Prevent outline when focused via skip link */
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  left: 0;
+  background-color: var(--colour-secondary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--colour-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  z-index: 9999;
+}
+
+.toast-notification svg {
+  color: #10b981;
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 /* Header */
@@ -412,5 +453,10 @@
     align-items: center;
     text-align: left;
   }
+
+  .toast-notification {
+    right: 2rem;
+    left: auto;
+  } 
 }
 </style>

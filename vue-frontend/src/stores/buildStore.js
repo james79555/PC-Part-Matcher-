@@ -5,12 +5,27 @@ import { usePcPartsStore } from './pcParts'
 export const useBuildStore = defineStore('build', () => {
     // State
     const parts = ref([])
+    const notification = ref(null)
+    const notificationTimeout = ref(null)
+
+    function showNotification(message) {
+        notification.value = message;
+        if (notificationTimeout.value) {
+            clearTimeout(notificationTimeout.value);
+        }
+        notificationTimeout.value = setTimeout(() => {
+            notification.value = null;
+        }, 3000);
+    }
 
     // Actions
     function addPart(part) {
         const exists = parts.value.find(p => p.id === part.id)
         if (!exists) {
             parts.value.push(part)
+            showNotification(`${part.name} added to your build!`)
+        } else {
+            showNotification(`${part.name} is already in your build!`)
         }
     }
 
@@ -104,6 +119,8 @@ export const useBuildStore = defineStore('build', () => {
 
     return {
         parts,
+        notification,
+        showNotification,
         addPart,
         removePart,
         clearBuild,

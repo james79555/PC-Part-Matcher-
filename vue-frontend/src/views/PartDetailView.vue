@@ -21,7 +21,6 @@
     const addToBuild = () => {
         if (part.value) {
             buildStore.addPart(part.value);
-            alert(part.value.name + ' added to your build!');
         }
     }
 </script>

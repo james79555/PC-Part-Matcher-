@@ -89,7 +89,6 @@ onMounted( () => {
 
 const addToBuild = (part) => {
     buildStore.addPart(part)
-    alert(part.name + ' added to your build!')
 }
 
 const clearFilters = () => {
