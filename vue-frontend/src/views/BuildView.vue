@@ -50,11 +50,16 @@ const shareBuild = async () => {
     const shareUrl = `${window.location.origin}/build?build=${ids}`
     
     try {
-        await navigator.clipboard.writeText(shareUrl)
-        copySuccess.value = true
-        setTimeout(() => copySuccess.value = false, 3000)
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(shareUrl)
+            copySuccess.value = true
+            setTimeout(() => copySuccess.value = false, 3000)
+        } else {
+            // Fallback for non-HTTPS local WordPress environments
+            prompt("Your browser requires manual copying on local setups. Copy your link below:", shareUrl)
+        }
     } catch (err) {
-        alert("Failed to copy link. Here is the URL:\n" + shareUrl)
+        prompt("Your browser requires manual copying. Copy your link below:", shareUrl)
     }
 }
 
