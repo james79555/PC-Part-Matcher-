@@ -25,19 +25,16 @@ This project was built to strictly adhere to the Web Design 2 assignment specifi
 
 ## 🚀 Setup & Installation (For Marking)
 
-Due to file size limits on free cloud hosting platforms, the full WordPress database and media library are provided via an export file.
+Because the project file sizes exceed standard upload limits, the `node_modules` directory has been removed to compress the submission. 
 
 ### Option 1: Full WordPress Integration (Recommended)
-To view the complete project, including the custom API plugin and database:
-1. Spin up a blank local WordPress site (e.g., using **Local WP**).
-2. Go to **Plugins > Add New** and install the **All-in-One WP Migration** plugin.
-3. Import the provided `.wpress` file located in the root of this submission folder.
-4. *Important:* Once imported, navigate to **Settings > Permalinks** and click **Save Changes** twice to flush the rewrite rules for the Vue Router.
-5. Visit the frontend of the site!
+This project directory contains the raw `app/` folder which acts as a Local WP installation. 
+1. If you use **Local WP**, you can import this entire project folder directly into Local as an existing site, or simply drag the `app/public/wp-content/themes/pc-part-matcher-theme` and `app/public/wp-content/plugins/pc-part-matcher-api` into a fresh WordPress installation.
+2. *Important:* If copying into a fresh WP install, navigate to **Settings > Permalinks** and click **Save Changes** twice to flush the rewrite rules for the Vue Router.
 
 ### Option 2: Vue Frontend Only (Dev Mode)
 If you wish to examine the Vue component architecture independent of the WordPress backend:
-1. Navigate to the `vue-frontend` directory in your terminal.
-2. Run `npm install` to install dependencies.
+1. Open your terminal and navigate to the `vue-frontend` directory.
+2. Run `npm install` to reinstall the deleted Node dependencies.
 3. Run `npm run dev` to start the Vite development server.
 *(Note: In dev mode, the app will attempt to fetch data from the local API endpoint. If the WordPress backend is not running, the inventory may not populate, but the component structure and UI are fully testable).*
