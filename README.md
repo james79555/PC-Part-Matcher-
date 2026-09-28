@@ -14,7 +14,9 @@ This project was built to strictly adhere to the Web Design 2 assignment specifi
     *   **A11y:** Passes WCAG 2.1 AA standards. Includes semantic HTML, `aria-labels`, `aria-invalid` form states, "Skip to Main Content" links, focus-trapping, and `role="status"` on notification toasts for screen readers.
     *   **GDPR:** Implements a fully functional Cookie Consent banner that saves user preferences to `localStorage`, alongside dedicated Privacy Policy and Terms of Service pages.
 *   **Forms & Validation:** The **Contact Page** features a highly robust form with real-time validation, Regex-based email checking, specific visual error states, and a simulated asynchronous submission process.
-*   **API Integration:** The Vue application fetches its live inventory data from a custom WordPress REST API endpoint. The **Browse Parts** page features advanced multi-dimensional filtering (by Component Type, Socket, Form Factor, Storage Interface) and price sorting.
+*   **API Integration (Dual implementation):**
+    *   **Custom WordPress REST API:** The Vue application fetches its live inventory data from a custom-built WordPress REST API endpoint plugin. The **Browse Parts** page features advanced multi-dimensional filtering (by Component Type, Socket, Form Factor, Storage Interface) and price sorting based on this data.
+    *   **External REST API (Frankfurter):** The application integrates with the **Frankfurter Public API** (`api.frankfurter.dev`) to fetch live, real-time currency exchange rates, allowing users to dynamically switch prices between GBP, USD, and EUR.
 
 ### 2. Additional Deliverables
 *   **WordPress Theme Integration:** The entire Vue SPA is embedded within a **Custom WordPress Theme**. We utilized `functions.php` to securely inject the absolute theme directory path (`window.wpThemeUrl`) directly into the Vue app, ensuring all static assets and routing resolve perfectly regardless of the WordPress hosting environment.

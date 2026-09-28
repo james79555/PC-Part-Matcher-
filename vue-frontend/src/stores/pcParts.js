@@ -40,7 +40,10 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         }
 
         try {
-            const res = await fetch(`/api/frankfurter/latest?amount=1&from=GBP&to=${targetCurrency}`);
+            // We must call the absolute URL directly. The old '/api/frankfurter' path 
+            // relied on a Vite Dev Server proxy, which doesn't exist in the live WordPress environment!
+            // Note: The Frankfurter API moved from .app to .dev/v1/ - this prevents CORS redirect blocks.
+            const res = await fetch(`https://api.frankfurter.dev/v1/latest?amount=1&from=GBP&to=${targetCurrency}`);
             if (!res.ok) throw new Error('API Network response was not ok');
 
             const data = await res.json();
@@ -64,6 +67,8 @@ export const usePcPartsStore = defineStore('pcParts', () => {
             // Using the new custom REST API endpoint
             const res = await fetch('http://pc-part-matcher.local/wp-json/pc-part-matcher/v1/parts')
             if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`)
+
+            const data = await res.json()
 
             // The API returns a highly structured array, but we use .map() here 
             // to defensively ensure every single property exists before Vue tries to render it.
