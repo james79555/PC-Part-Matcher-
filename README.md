@@ -25,6 +25,18 @@ This project was built to strictly adhere to the Web Design 2 assignment specifi
 
 ---
 
+## 🤖 AI Workflow & Tooling
+
+To demonstrate modern development workflows and tooling proficiency, this project was developed utilizing AI as a pair-programming assistant (Google Antigravity / Gemini). AI was strictly used as a collaborative tool to enhance productivity and code quality, rather than as an automated generator. 
+
+Key areas where AI was leveraged:
+*   **Architecture & Planning:** Collaborating on the optimal strategy for bridging a modern Vite/Vue 3 frontend with a monolithic WordPress backend without relying on heavy plugins.
+*   **Debugging & Troubleshooting:** Fast-tracking complex debugging scenarios, such as resolving cross-origin (CORS) redirects from the Frankfurter API and identifying dynamic routing conflicts within WordPress's `functions.php`.
+*   **Code Quality & A11y:** Assisting with rigorous WCAG 2.1 AA accessibility audits (implementing `aria-labels`, focus-traps, and semantic HTML) and automatically generating standardized JSDoc/PHPDoc comments for robust maintainability.
+*   **Educational Review:** Breaking down complex regular expressions and WordPress core logic to ensure a total understanding of the underlying codebase before submission.
+
+---
+
 ## 🚀 Setup & Installation (For Marking)
 
 Because the project file sizes exceed standard upload limits, the `node_modules` directory has been removed to compress the submission. 
