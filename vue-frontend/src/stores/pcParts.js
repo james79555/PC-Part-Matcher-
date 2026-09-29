@@ -64,8 +64,11 @@ export const usePcPartsStore = defineStore('pcParts', () => {
         isLoading.value = true
         error.value = null
         try {
-            // Using the new custom REST API endpoint
-            const res = await fetch('http://pc-part-matcher.local/wp-json/pc-part-matcher/v1/parts')
+            // Dynamic URL resolution:
+            // In Vite 'dev' mode, forcefully hit the local WordPress site to avoid CORS/404s.
+            // In production (live server), use the current browser domain so it works anywhere.
+            const baseUrl = import.meta.env.DEV ? 'http://pc-part-matcher.local' : window.location.origin;
+            const res = await fetch(`${baseUrl}/wp-json/pc-part-matcher/v1/parts`)
             if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`)
 
             const data = await res.json()
