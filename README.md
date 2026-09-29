@@ -1,5 +1,7 @@
 # PC Part Matcher
 
+🔗 **Live Deployment:** [https://pc-part-matcher.infinityfree.io/](https://pc-part-matcher.infinityfree.io/)
+
 PC Part Matcher is a modern, responsive Single Page Application (SPA) designed to help users build their perfect PC. It features an interactive hardware compatibility checker, a live browsing interface with robust filtering, and a seamless WordPress backend integration.
 
 ## 🎓 Assignment Criteria Fulfilled (Aiming for Excellent Band: 32-40 pts)
