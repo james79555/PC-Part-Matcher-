@@ -25,6 +25,26 @@ This project was built to strictly adhere to the Web Design 2 assignment specifi
 
 ---
 
+## 🏗️ Implementation & Architecture Context
+
+Beyond the assignment requirements, this project was architected to mimic a modern "Headless" CMS approach while still residing entirely within a standard WordPress theme structure. This prevents CORS issues and simplifies deployment.
+
+### 1. The Frontend (Vue 3 SPA)
+The user interface is a strictly separated **Vue 3 Single Page Application** built with **Vite**. 
+*   **State Management:** **Pinia** is used to maintain two distinct stores: `pcPartsStore` (which holds the fetched database inventory and handles live currency conversion) and `buildStore` (which persists the user's active PC build to `localStorage` and continuously cross-checks components for physical compatibility).
+*   **Routing:** **Vue Router** completely bypasses WordPress's standard page-loading mechanism, rendering all pages client-side for immediate, app-like transitions.
+
+### 2. The Backend (WordPress & ACF)
+Instead of hardcoding hardware data into JSON files, the project utilizes **WordPress** as a robust GUI database. 
+*   **Custom Data Models:** A Custom Post Type (`pc-part`) was created, and **Advanced Custom Fields (ACF)** was used to assign rigid schemas to each part (e.g., forcing a motherboard to declare its Socket Type and Form Factor). This prevents data-entry errors.
+
+### 3. The Bridge (How they connect)
+Bridging a compiled Vite application into a PHP-based monolithic CMS required two custom solutions:
+*   **Data Delivery (The API Plugin):** Standard WordPress REST API endpoints are notoriously bloated and expose sensitive user data. A custom plugin (`pc-part-matcher-api.php`) was built to intercept the database query, extract only the necessary ACF fields, and serve a perfectly tailored, lightweight JSON array to the Vue app.
+*   **Asset Injection (functions.php):** Because Vite hashes filenames on every build (e.g., `index-CmOSXq5H.js`), we cannot hardcode script tags. The theme's `functions.php` dynamically searches the `dist/` directory via PHP `glob()` to enqueue the latest build. It also injects a global JavaScript variable (`window.wpThemeUrl`) so the Vue application can dynamically resolve image paths regardless of whether the site is hosted locally or on a live server.
+
+---
+
 ## 🤖 AI Workflow & Tooling
 
 To demonstrate modern development workflows and tooling proficiency, this project was developed utilizing AI as a pair-programming assistant (Google Antigravity / Gemini). AI was strictly used as a collaborative tool to enhance productivity and code quality, rather than as an automated generator. 
